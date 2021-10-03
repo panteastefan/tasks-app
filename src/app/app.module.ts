@@ -9,7 +9,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {TabsModule} from "ngx-bootstrap/tabs";
 import { SearchComponent } from './components/search/search.component';
 import { TaskComponent } from './components/task/task.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { TasksPageComponent } from './pages/tasks-page/tasks-page.component';
 
 @NgModule({
   declarations: [
@@ -17,14 +19,17 @@ import {FormsModule} from "@angular/forms";
     UserTasksTableComponent,
     SearchComponent,
     TaskComponent,
+    LoginPageComponent,
+    TasksPageComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        TabsModule,
-        FormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    TabsModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
