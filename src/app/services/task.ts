@@ -1,8 +1,4 @@
-export enum Status {
-  NEW = 'NEW',
-  InProgress = 'IN_PROGRESS',
-  Done = 'DONE'
-}
+import {Status} from "./status";
 
 export interface Task {
   id: number;
