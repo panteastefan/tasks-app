@@ -7,18 +7,24 @@ import {HttpClientModule} from "@angular/common/http";
 import { UserTasksTableComponent } from './components/user-tasks-table/user-tasks-table.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {TabsModule} from "ngx-bootstrap/tabs";
+import { SearchComponent } from './components/search/search.component';
+import { TaskComponent } from './components/task/task.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
     UserTasksTableComponent,
+    SearchComponent,
+    TaskComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    TabsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        TabsModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
