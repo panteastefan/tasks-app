@@ -7,6 +7,8 @@ import {HttpClientModule} from "@angular/common/http";
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserTasksTableComponent } from './components/user-tasks-table/user-tasks-table.component';
 import { TaskElementComponent } from './components/task-element/task-element.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {TabsModule} from "ngx-bootstrap/tabs";
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { TaskElementComponent } from './components/task-element/task-element.com
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    TabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
