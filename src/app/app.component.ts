@@ -19,7 +19,7 @@ export class AppComponent implements OnInit{
   }
 
   public getTasks(): void {
-    this.taskService.getTasks().subscribe(
+    this.taskService.getUserTasks().subscribe(
       (response: Task[]) => {
         this.tasks = response;
       },
