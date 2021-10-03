@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Status} from "../../services/tasks/status";
 import {User} from "../../services/users/user";
-
+import {UsersService} from "../../services/users/users.service";
 
 @Component({
   selector: 'app-task',
@@ -10,16 +10,24 @@ import {User} from "../../services/users/user";
 })
 export class TaskComponent implements OnInit {
 
+  public users!: User[];
   @Input() task: Task;
-  @Input() users: Set<User>;
 
   keys = Object.keys(Status);
   statusValues = this.keys.map(k => Status[k as Status]);
 
-  constructor() {
+  constructor(private userService: UsersService) {
   }
 
   ngOnInit(): void {
+    this.getUsers();
+  }
+  public getUsers(): void{
+    this.userService.getUsers().subscribe(
+      (response: User[]) => {
+        this.users = response;
+      }
+    )
   }
 
 }
