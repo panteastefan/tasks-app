@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import {LoginService} from "../../services/users/login.service";
+import {HttpErrorResponse} from "@angular/common/http";
+import {Router} from "@angular/router";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-login-page',
@@ -12,7 +16,8 @@ export class LoginPageComponent implements OnInit {
     password: ''
   });
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private loginService: LoginService,
+              private router: Router, private cookieService: CookieService) { }
 
   ngOnInit(): void {
   }
@@ -20,5 +25,15 @@ export class LoginPageComponent implements OnInit {
 
   onSubmit(){
     console.log(this.loginForm.value.username, this.loginForm.value.password);
+    this.loginService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe(
+      (response: any) => {
+        console.log(response);
+        this.cookieService.set("lgnck", response.loginToken);
+        this.router.navigateByUrl("/tasks");
+        },
+      (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    );
   }
 }
