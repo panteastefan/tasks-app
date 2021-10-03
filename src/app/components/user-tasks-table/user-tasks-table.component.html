@@ -1,1 +1,18 @@
-<p>user-tasks-table works!</p>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Status</th>
+    <th scope="col">DueDate</th>
+    <th scope="col">Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of tasks">
+      <td>{{task.name}}</td>
+      <td>{{task.status}}</td>
+      <td>{{task.dueDate|date: 'dd/MM/yyyy'}}</td>
+      <td>{{task.description}}</td>
+    </tr>
+  </tbody>
+</table>
