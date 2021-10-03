@@ -1,6 +1,6 @@
-import { Task } from './task';
+import { Task } from './services/task';
 import {Component, OnInit} from "@angular/core";
-import {TasksService} from "./tasks.service";
+import {TasksService} from "./services/tasks.service";
 import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
 
 @Component({
