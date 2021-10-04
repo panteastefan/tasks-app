@@ -1,4 +1,5 @@
 import {Status} from "./status";
+import {User} from "./user";
 
 export interface Task {
   id: number;
@@ -6,4 +7,5 @@ export interface Task {
   description: string;
   dueDate: Date;
   status: Status;
+  user: User;
 }
