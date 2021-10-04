@@ -1,17 +1,19 @@
 <form>
   <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" class="form-control" id="name">
+    <label for="name">
+      Name
+    </label>
+    <input type="text" name="name" id="name" [value]="task.name" class="form-control">
   </div>
 
   <div class="form-group">
     <label for="description">Description</label>
-    <textarea class="form-control" id="description" rows="3"></textarea>
+    <textarea class="form-control" id="description" [value]="task.description" rows="3"></textarea>
   </div>
 
   <div class="form-group">
     <label>DueDate</label>
-    <input type="text" class="form-control" id="dueDate" placeholder="dd/mm/yyy">
+    <input type="text" class="form-control" id="dueDate" [value]="task.dueDate" placeholder="dd/mm/yyy">
   </div>
 
   <div class="form-group">
@@ -19,16 +21,21 @@
     <select class="form-control" id="assignedUser">
       <option value='Anyone'>Anyone</option>
       <option *ngFor="let user of users"
-              [value]="user.name">
+              [selected]="user.name == task.user.name"
+              [ngValue]="user.name">
         {{user.name}}
       </option>
     </select>
   </div>
 
   <div class="form-group">
-  <label for="status">Status</label>
+    <label for="status">Status</label>
     <select id="status">
-      <option *ngFor="let status of statusValues" [value]=status [label]="status"></option>
+      <option *ngFor="let status of statusValues"
+              [value]="task.status"
+              [selected]="task.status == status"
+              [label]="status">
+      </option>
     </select>
   </div>
 
