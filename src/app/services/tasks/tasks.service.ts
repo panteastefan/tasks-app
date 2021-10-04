@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import { Task } from "./task";
+import { Task } from "../../components/models/task";
 import {environment} from "../../../environments/environment";
 import {CookieService} from "ngx-cookie-service";
 
