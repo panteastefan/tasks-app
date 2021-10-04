@@ -17,21 +17,21 @@ export class TaskComponent implements OnInit {
   statusValues = this.keys.map(k => Status[k as Status]);
 
   constructor() {
-    this.setTask();
   }
 
   public setTask(): void{
     if (this.task == null){
       this.task = {
-        'name': null,
-        'description': null,
-        'dueDate': null,
-        'status': null,
-        'user': null
+        'name': '',
+        'description': '',
+        'dueDate': '',
+        'status': '',
+        'user': ''
       }
     }
   }
 
   ngOnInit(): void {
+    this.setTask();
   }
 }

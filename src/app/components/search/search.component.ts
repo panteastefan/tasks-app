@@ -11,14 +11,14 @@ import {Status} from "../../models/status";
 export class SearchComponent implements OnInit {
   public task: any;
   public users!: User[];
-  constructor(private userService: UsersService) { }
+  constructor(private userService: UsersService) {
+  }
 
   ngOnInit(): void {
     this.getUsers();
     this.setTask();
   }
   private setTask(): void{
-    // this.task = null;
     // this is just for test. it's gonna be used on EditTask
     this.task = {
       'name': 'Task name',
@@ -29,6 +29,14 @@ export class SearchComponent implements OnInit {
         'name': "Stefan"
       }
     }
+    this.task = null;
+    // this.task = {
+    //   'name': '',
+    //   'description': '',
+    //   'dueDate': '',
+    //   'status': '',
+    //   'user': ''
+    // }
   }
   public getUsers(): void{
     this.userService.getUsers().subscribe(
