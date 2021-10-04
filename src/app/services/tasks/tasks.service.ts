@@ -18,7 +18,8 @@ export class TasksService {
   }
 
   public getUserTasks(): Observable<Task[]> {
-    return this.http.post<Task[]>(`${this.apiServerUrl}/tasks/mine`, {userToken: this.cookieService.get("lgnck")});
+    return this.http.post<Task[]>(`${this.apiServerUrl}/tasks/mine`,
+      {userToken: this.cookieService.get("lgnck")});
   }
 
   public addTask(task: Task): Observable<Task> {
