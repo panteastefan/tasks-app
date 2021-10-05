@@ -4,11 +4,11 @@
   </tab>
 
   <tab heading="Search">
-    <app-search></app-search>
+    <app-search  [users]="users" [task]="task"></app-search>
   </tab>
 
   <tab heading="New Task">
-    <h2>New Task</h2>
+    <app-new-task [users]="users" [task]="task"></app-new-task>
   </tab>
 
 </tabset>

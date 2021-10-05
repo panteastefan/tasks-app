@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Status} from "../../models/status";
 import {User} from "../../models/user";
-import {Task} from "../../models/task";
 
 @Component({
   selector: 'app-task',
@@ -10,8 +9,8 @@ import {Task} from "../../models/task";
 })
 export class TaskComponent implements OnInit {
 
-  @Input() users: User[];
-  @Input() task: any;
+  @Input() users!: User[];
+  @Input() task!: any;
 
   keys = Object.keys(Status);
   statusValues = this.keys.map(k => Status[k as Status]);

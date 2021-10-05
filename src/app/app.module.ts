@@ -12,6 +12,7 @@ import { TaskComponent } from './components/task/task.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { TasksPageComponent } from './pages/tasks-page/tasks-page.component';
+import { NewTaskComponent } from './components/new-task/new-task.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { TasksPageComponent } from './pages/tasks-page/tasks-page.component';
     TaskComponent,
     LoginPageComponent,
     TasksPageComponent,
+    NewTaskComponent
   ],
   imports: [
     BrowserModule,
