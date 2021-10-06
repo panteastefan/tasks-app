@@ -1,5 +1,4 @@
 import {Status} from "./status";
-import {User} from "./user";
 
 export class Task {
   id: number;
@@ -7,5 +6,5 @@ export class Task {
   description: string;
   dueDate: Date;
   status: Status;
-  user: User;
+  userId: number;
 }
