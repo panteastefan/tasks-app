@@ -22,16 +22,16 @@ export class TasksService {
       {userToken: this.cookieService.get("lgnck")});
   }
 
-  public addTask(task: Task): Observable<Task> {
-    return this.http.post<Task>(`${this.apiServerUrl}/tasks/add`,
-      {...task, userToken: this.cookieService.get("lgnck")});
-  }
-
-  public updateTask(task: Task): Observable<Task> {
-    return this.http.put<Task>(`${this.apiServerUrl}/tasks/add`, task);
-  }
-
-  public deleteTask(taskId: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiServerUrl}/tasks/delete/${taskId}`);
-  }
+  // public addTask(task: Task): Observable<Task> {
+  //   return this.http.post<Task>(`${this.apiServerUrl}/tasks/add`,
+  //     {...task, userToken: this.cookieService.get("lgnck")});
+  // }
+  //
+  // public updateTask(task: Task): Observable<Task> {
+  //   return this.http.put<Task>(`${this.apiServerUrl}/tasks/add`, task);
+  // }
+  //
+  // public deleteTask(taskId: number): Observable<void> {
+  //   return this.http.delete<void>(`${this.apiServerUrl}/tasks/delete/${taskId}`);
+  // }
 }
