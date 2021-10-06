@@ -9,9 +9,13 @@ import {User} from "../../models/user";
 export class NewTaskComponent implements OnInit {
   @Input() users: User[];
   @Input() task: any;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  addTask(task: Task): void {
+    console.log(task);
+  }
 }

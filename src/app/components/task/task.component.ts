@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Status} from "../../models/status";
 import {User} from "../../models/user";
 
@@ -11,6 +11,8 @@ export class TaskComponent implements OnInit {
 
   @Input() users!: User[];
   @Input() task!: any;
+  @Output() taskOutputEvent = new EventEmitter<Task>();
+
 
   keys = Object.keys(Status);
   statusValues = this.keys.map(k => Status[k as Status]);
@@ -28,6 +30,10 @@ export class TaskComponent implements OnInit {
         'user': ''
       }
     }
+  }
+  submit(): void{
+    console.log("submit from task");
+    this.taskOutputEvent.emit(this.task);
   }
 
   ngOnInit(): void {
