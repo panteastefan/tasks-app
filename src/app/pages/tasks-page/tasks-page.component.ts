@@ -58,6 +58,9 @@ export class TasksPageComponent implements OnInit {
     this.userService.getUsers().subscribe(
       (response: User[]) => {
         this.users = response;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
       }
     )
   }
