@@ -19,7 +19,7 @@
   <div class="form-group">
     <label for="assignedUser">Assigned to user</label>
     <select class="form-control" id="assignedUser">
-<!--      <option value='Anyone'>Anyone</option>-->
+      <option selected disabled>Select user</option>
       <option *ngFor="let user of users"
               [selected]="user.name == task.user.name"
               [ngValue]="user.name">
