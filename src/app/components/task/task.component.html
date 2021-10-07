@@ -36,7 +36,9 @@
     </label>
     <select id="status" class="form-control" formControlName="status">
       <option *ngIf="this.new"
-            [selected]="statusValues[0]">
+              [ngValue]="statusValues[0]"
+              [selected]="statusValues[0]"
+              [label]="statusValues[0]">
         {{statusValues[0]}}
       </option>
       <ng-container  *ngIf="!this.new">

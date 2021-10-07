@@ -40,11 +40,11 @@ export class TaskComponent implements OnInit {
     }
     if (this.task.name == ''){
       this.statusValues = this.keys.map(k => Status[k as Status]);
-      this.new = true;
+      this.new = false;
     }
     else{
       this.statusValues = [Status.NEW];
-      this.new = false;
+      this.new = true;
     }
   }
   submit(): void{
