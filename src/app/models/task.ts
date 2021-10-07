@@ -6,5 +6,12 @@ export class Task {
   description: string;
   dueDate: Date;
   status: Status;
-  userId: number;
+  user: string;
+  constructor(name: string, description: string, dueDate: Date, status: Status, user: string) {
+    this.name = name;
+    this.description = description;
+    this.dueDate = dueDate;
+    this.status = status;
+    this.user = user;
+  }
 }
