@@ -13,19 +13,19 @@
 
   <div class="form-group">
     <label for="dueDate">DueDate</label>
-    <input type="text" id="dueDate" class="form-control" formControlName="dueDate" [value]="task.dueDate" placeholder="dd/mm/yyy">
+    <input type="date" id="dueDate" class="form-control" formControlName="dueDate" [value]="task.dueDate" placeholder="dd/mm/yyy">
   </div>
 
   <div class="form-group">
     <label for="user">Assigned to user</label>
-    <select id="user" class="form-control" formControlName="assignedUser">
+    <select id="user" class="form-control" formControlName="username">
       <option value="" disabled selected>Select user</option>
 <!--      <option selected disabled>Select user</option>-->
       <option *ngFor="let user of users"
-              [selected]="user.name == task.user.name"
-              [ngValue]="user.name"
-              [label]="user.name">
-        {{user.name}}
+              [selected]="user.username == task.user.username"
+              [ngValue]="user.username"
+              [label]="user.username">
+        {{user.username}}
       </option>
     </select>
   </div>

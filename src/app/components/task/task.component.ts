@@ -19,7 +19,7 @@ export class TaskComponent implements OnInit {
     name: '',
     description: '',
     dueDate: '',
-    assignedUser: '',
+    username: '',
     status: ''
   });
 
@@ -51,13 +51,12 @@ export class TaskComponent implements OnInit {
     console.log("submit from task");
     console.log(this.taskForm.value.name, this.taskForm.value.description,
       this.taskForm.value.dueDate, this.taskForm.value.status,
-      this.taskForm.value.assignedUser);
+      this.taskForm.value.username);
     console.log(this.taskForm);
     this.taskOutputEvent.emit(this.task);
   }
 
   ngOnInit(): void {
     this.setTask();
-    console.log("users", this.users);
   }
 }
