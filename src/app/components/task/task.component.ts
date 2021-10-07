@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Status} from "../../models/status";
 import {User} from "../../models/user";
 import {FormBuilder, FormControl} from "@angular/forms";
+import {Task} from "../../models/task";
 
 @Component({
   selector: 'app-task',
@@ -13,6 +14,7 @@ export class TaskComponent implements OnInit {
   statusValues: any;
   @Input() users!: User[];
   @Input() task!: any;
+  newTask: Task;
   new: boolean;
   @Output() taskOutputEvent = new EventEmitter<Task>();
   taskForm = this.formBuilder.group({
@@ -49,11 +51,11 @@ export class TaskComponent implements OnInit {
   }
   submit(): void{
     console.log("submit from task");
-    console.log(this.taskForm.value.name, this.taskForm.value.description,
+    this.newTask = new Task(this.taskForm.value.name, this.taskForm.value.description,
       this.taskForm.value.dueDate, this.taskForm.value.status,
-      this.taskForm.value.username);
-    console.log(this.taskForm);
-    this.taskOutputEvent.emit(this.task);
+      this.taskForm.value.username)
+    console.log(this.newTask);
+    this.taskOutputEvent.emit(this.newTask);
   }
 
   ngOnInit(): void {
