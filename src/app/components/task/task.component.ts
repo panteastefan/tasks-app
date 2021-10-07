@@ -10,8 +10,10 @@ import {FormBuilder, FormControl} from "@angular/forms";
 })
 export class TaskComponent implements OnInit {
 
+  statusValues: any;
   @Input() users!: User[];
   @Input() task!: any;
+  new: boolean;
   @Output() taskOutputEvent = new EventEmitter<Task>();
   taskForm = this.formBuilder.group({
     name: '',
@@ -22,7 +24,6 @@ export class TaskComponent implements OnInit {
   });
 
   keys = Object.keys(Status);
-  statusValues = this.keys.map(k => Status[k as Status]);
 
   constructor(private formBuilder: FormBuilder) {
   }
@@ -34,8 +35,16 @@ export class TaskComponent implements OnInit {
         'description': '',
         'dueDate': '',
         'status': '',
-        'user': ''
+        'username': ''
       }
+    }
+    if (this.task.name == ''){
+      this.statusValues = this.keys.map(k => Status[k as Status]);
+      this.new = true;
+    }
+    else{
+      this.statusValues = [Status.NEW];
+      this.new = false;
     }
   }
   submit(): void{
@@ -49,5 +58,6 @@ export class TaskComponent implements OnInit {
 
   ngOnInit(): void {
     this.setTask();
+    console.log("users", this.users);
   }
 }
