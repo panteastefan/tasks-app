@@ -23,9 +23,10 @@ export class TasksService {
       {userToken: this.cookieService.get("lgnck")});
   }
 
-  public addTask(): Observable<Task> {
+  public addTask(taskCreationDTO: Task): Observable<Task> {
+    console.log({userToken: this.cookieService.get("lgnck"), taskCreationDTO});
       return this.http.post<Task>(`${this.apiServerUrl}/tasks/add`,
-        {userToken: this.cookieService.get("lgnck")});
+        {userToken: this.cookieService.get("lgnck"), taskCreationDTO});
   }
 
   // public addTask(task: Task): Observable<Task> {
