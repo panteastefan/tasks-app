@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {NgbModal, NgbModalOptions} from "@ng-bootstrap/ng-bootstrap";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {NgbModal, NgbModalOptions, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 import {ModalContentComponent} from "ngb-modal";
 import {EditTaskModalComponent} from "../edit-task-modal/edit-task-modal.component";
 import {User} from "../../models/user";
@@ -16,8 +16,10 @@ export class UserTasksTableComponent implements OnInit {
     backdrop : 'static',
     keyboard : false
   };
+  modalRef: NgbModalRef;
   @Input() tasks: Task[];
   @Input() users: User[];
+
   constructor(private modalService: NgbModal) {
   }
 
@@ -35,11 +37,12 @@ export class UserTasksTableComponent implements OnInit {
   }
   openModal(task: Task) {
     console.log("user-tasks-table", task);
-    const modalRef = this.modalService.open(EditTaskModalComponent);
-    // const modalRef = this.modalService.open(EditTaskModalComponent,
-    //                                         this.ngbModalOptions);
-    modalRef.componentInstance.task = task;
-    modalRef.componentInstance.users = this.users;
+    // this.modalRef = this.modalService.open(EditTaskModalComponent);
+    this.modalRef = this.modalService.open(EditTaskModalComponent,
+                                            this.ngbModalOptions);
+    this.modalRef.componentInstance.task = task;
+    this.modalRef.componentInstance.users = this.users;
 
+    this.modalRef.componentInstance.modalOutputEvent.subscribe(() => {this.modalRef.close()});
   }
 }

@@ -1,8 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Task} from "../../models/task";
 import {HttpErrorResponse} from "@angular/common/http";
 import {TasksService} from "../../services/tasks/tasks.service";
 import {User} from "../../models/user";
+import {NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-edit-task-modal',
@@ -10,10 +11,11 @@ import {User} from "../../models/user";
   styleUrls: ['./edit-task-modal.component.css']
 })
 export class EditTaskModalComponent implements OnInit {
-
+  @Input() modalRef: NgbModalRef;
   @Input() task: Task;
   @Input() users: User[];
   updatedTask: Task;
+  @Output() modalOutputEvent = new EventEmitter<NgbModalRef>();
 
   constructor(private taskService: TasksService) { }
 
@@ -32,8 +34,8 @@ export class EditTaskModalComponent implements OnInit {
       }
     );
   }
-
   closeModal(): void{
-    console.log("close");
+    this.modalOutputEvent.emit();
   }
+
 }

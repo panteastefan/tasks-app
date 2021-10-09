@@ -2,6 +2,6 @@
   <app-task [task]="task" [users]="users" (taskOutputEvent)="updateTask($event)"></app-task>
   <div>
     <button> Save </button>
-    <button click> Close </button>
+    <button (click)="closeModal()"> Close </button>
   </div>
 </div>
