@@ -32,4 +32,8 @@ export class EditTaskModalComponent implements OnInit {
       }
     );
   }
+
+  closeModal(): void{
+    console.log("close");
+  }
 }
