@@ -16,7 +16,7 @@
       <td>{{task.description}}</td>
       <td>
           <button (click)="openModal(task)">Edit</button>
-          <button (click)="deleteTask()">Delete</button>
+          <button (click)="deleteTask(task.id)">Delete</button>
 
       </td>
     </tr>

@@ -14,8 +14,8 @@ export class EditTaskModalComponent implements OnInit {
   @Input() modalRef: NgbModalRef;
   @Input() task: Task;
   @Input() users: User[];
-  updatedTask: Task;
   @Output() modalOutputEvent = new EventEmitter<NgbModalRef>();
+  updatedTask: Task;
 
   constructor(private taskService: TasksService) { }
 
@@ -34,6 +34,8 @@ export class EditTaskModalComponent implements OnInit {
       }
     );
   }
+
+
   closeModal(): void{
     this.modalOutputEvent.emit();
   }

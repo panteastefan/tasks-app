@@ -1,10 +1,11 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {NgbModal, NgbModalOptions, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
-import {ModalContentComponent} from "ngb-modal";
 import {EditTaskModalComponent} from "../edit-task-modal/edit-task-modal.component";
 import {User} from "../../models/user";
 
 import {Task} from "../../models/task";
+import {HttpErrorResponse} from "@angular/common/http";
+import {TasksService} from "../../services/tasks/tasks.service";
 
 @Component({
   selector: 'app-user-tasks-table',
@@ -17,27 +18,32 @@ export class UserTasksTableComponent implements OnInit {
     keyboard : false
   };
   modalRef: NgbModalRef;
+  deletedTaskId: number;
   @Input() tasks: Task[];
   @Input() users: User[];
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal,
+              private taskService: TasksService) {
   }
 
   ngOnInit(): void {
 
   }
 
-  editTask(): void{
-    console.log("edit task");
-  }
-
-  deleteTask(): void{
-    console.log("delete task");
-
+  deleteTask(taskId: number): void {
+    console.log("delete task:", taskId);
+    this.taskService.deleteTask(taskId).subscribe(
+      (response: number) => {
+        this.deletedTaskId = response;
+        console.log("deleted task id: ", this.deletedTaskId);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
   }
   openModal(task: Task) {
     console.log("user-tasks-table", task);
-    // this.modalRef = this.modalService.open(EditTaskModalComponent);
     this.modalRef = this.modalService.open(EditTaskModalComponent,
                                             this.ngbModalOptions);
     this.modalRef.componentInstance.task = task;
