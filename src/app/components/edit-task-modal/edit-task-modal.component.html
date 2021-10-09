@@ -1,1 +1,4 @@
-<p>edit-task-modal works!</p>
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Simple modal</h4>
+  <app-task [task]="task" [users]="users" (taskOutputEvent)="editTask($event)"></app-task>
+</div>

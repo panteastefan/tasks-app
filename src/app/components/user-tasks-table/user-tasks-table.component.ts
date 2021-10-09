@@ -1,4 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {ModalContentComponent} from "ngb-modal";
+import {EditTaskModalComponent} from "../edit-task-modal/edit-task-modal.component";
+import {User} from "../../models/user";
+
 
 @Component({
   selector: 'app-user-tasks-table',
@@ -8,7 +13,8 @@ import {Component, Input, OnInit} from '@angular/core';
 export class UserTasksTableComponent implements OnInit {
 
   @Input() tasks: any;
-  constructor() {
+  @Input() users: User[];
+  constructor(private modalService: NgbModal) {
   }
 
   ngOnInit(): void {
@@ -20,5 +26,10 @@ export class UserTasksTableComponent implements OnInit {
 
   deleteTask(): void{
     console.log("delete task");
+  }
+  openModal() {
+    const modalRef = this.modalService.open(EditTaskModalComponent);
+    modalRef.componentInstance.task = this.tasks[0];
+    modalRef.componentInstance.users = this.users;
   }
 }

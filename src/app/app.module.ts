@@ -14,6 +14,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { TasksPageComponent } from './pages/tasks-page/tasks-page.component';
 import { NewTaskComponent } from './components/new-task/new-task.component';
 import { EditTaskModalComponent } from './components/edit-task-modal/edit-task-modal.component';
+import {ModalModule} from "ngb-modal";
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { EditTaskModalComponent } from './components/edit-task-modal/edit-task-m
     HttpClientModule,
     TabsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModalModule
   ],
   providers: [],
   bootstrap: [AppComponent]
