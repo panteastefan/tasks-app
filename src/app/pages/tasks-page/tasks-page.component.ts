@@ -27,6 +27,7 @@ export class TasksPageComponent implements OnInit {
     this.taskService.getUserTasks().subscribe(
       (response: Task[]) => {
         this.tasks = response;
+        console.log(this.tasks);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -50,8 +51,7 @@ export class TasksPageComponent implements OnInit {
       'name': '',
       'description': '',
       'dueDate': '',
-      'status': '',
-      'user': ''
+      'status': ''
     }
   }
   public getUsers(): void{

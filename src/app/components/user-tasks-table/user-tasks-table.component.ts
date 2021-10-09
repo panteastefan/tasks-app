@@ -4,6 +4,7 @@ import {ModalContentComponent} from "ngb-modal";
 import {EditTaskModalComponent} from "../edit-task-modal/edit-task-modal.component";
 import {User} from "../../models/user";
 
+import {Task} from "../../models/task";
 
 @Component({
   selector: 'app-user-tasks-table',
@@ -12,12 +13,13 @@ import {User} from "../../models/user";
 })
 export class UserTasksTableComponent implements OnInit {
 
-  @Input() tasks: any;
+  @Input() tasks: Task[];
   @Input() users: User[];
   constructor(private modalService: NgbModal) {
   }
 
   ngOnInit(): void {
+
   }
 
   editTask(): void{
@@ -30,6 +32,10 @@ export class UserTasksTableComponent implements OnInit {
   openModal() {
     const modalRef = this.modalService.open(EditTaskModalComponent);
     modalRef.componentInstance.task = this.tasks[0];
+    // this.users = [new User(1, "name", "username")]
     modalRef.componentInstance.users = this.users;
+
+    console.log("user-tasks-table", this.users);
+    console.log("user-tasks-table", this.tasks[0]);
   }
 }

@@ -11,14 +11,13 @@ import {User} from "../../models/user";
 })
 export class EditTaskModalComponent implements OnInit {
 
-  @Input() public task: Task;
+  @Input() task: Task;
   @Input() users: User[];
   editedTask: Task;
 
   constructor(private taskService: TasksService) { }
 
   ngOnInit(): void {
-    console.log(this.task);
   }
 
   editTask(task: Task): void {

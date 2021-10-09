@@ -11,7 +11,6 @@ import {Task} from "../../models/task";
 })
 export class TaskComponent implements OnInit {
 
-  statusValues: any;
   @Input() users!: User[];
   @Input() task!: any;
   newTask: Task;
@@ -26,6 +25,7 @@ export class TaskComponent implements OnInit {
   });
 
   keys = Object.keys(Status);
+  statusValues = this.keys.map(k => Status[k as Status]);
 
   constructor(private formBuilder: FormBuilder) {
   }
@@ -40,17 +40,22 @@ export class TaskComponent implements OnInit {
         'username': ''
       }
     }
-    if (this.task.name == ''){
-      this.statusValues = this.keys.map(k => Status[k as Status]);
-      this.new = false;
-    }
-    else{
-      this.statusValues = [Status.NEW];
-      this.new = true;
-    }
+    // if (this.task.name == ''){
+    //   this.statusValues = this.keys.map(k => Status[k as Status]);
+    //   this.new = true;
+    // }
+    // else{
+    //   // this.statusValues = [Status.NEW];
+    //
+    //   this.statusValues = this.keys.map(k => Status[k as Status]);
+    //   this.new = true;
+    // }
   }
   submit(): void{
     console.log("submit from task");
+    // this.newTask = new Task(this.taskForm.value.name, this.taskForm.value.description,
+    //   this.taskForm.value.dueDate, this.taskForm.value.status,
+    //   this.taskForm.value.username)
     this.newTask = new Task(this.taskForm.value.name, this.taskForm.value.description,
       this.taskForm.value.dueDate, this.taskForm.value.status,
       this.taskForm.value.username)
@@ -59,6 +64,6 @@ export class TaskComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.setTask();
+    // this.setTask();
   }
 }

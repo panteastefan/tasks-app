@@ -15,14 +15,13 @@
     <label for="dueDate">DueDate</label>
     <input type="date" id="dueDate" class="form-control" formControlName="dueDate" [value]="task.dueDate" placeholder="dd/mm/yyy">
   </div>
-
   <div class="form-group">
     <label for="username">Assigned to user</label>
     <select id="username" class="form-control" formControlName="username">
       <option value="" disabled selected>Select user</option>
 <!--      <option selected disabled>Select user</option>-->
       <option *ngFor="let user of users"
-              [selected]="user.username == task.user.username"
+              [selected]="user.username"
               [ngValue]="user.username"
               [label]="user.username">
         {{user.username}}
@@ -35,12 +34,12 @@
       Status
     </label>
     <select id="status" class="form-control" formControlName="status">
-      <option *ngIf="this.new"
-              [ngValue]="statusValues[0]"
-              [selected]="statusValues[0]"
-              [label]="statusValues[0]">
-        {{statusValues[0]}}
-      </option>
+<!--      <option *ngIf="this.new"-->
+<!--              [ngValue]="statusValues[0]"-->
+<!--              [selected]="statusValues[0]"-->
+<!--              [label]="statusValues[0]">-->
+<!--        {{statusValues[0]}}-->
+<!--      </option>-->
       <ng-container  *ngIf="!this.new">
 
         <option
