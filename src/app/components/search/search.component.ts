@@ -27,7 +27,7 @@ export class SearchComponent implements OnInit {
     this.taskService.getTasks().subscribe(
       (response: Task[]) => {
         this.tasks = response;
-        console.log(this.tasks);
+        console.log("get tasks:", this.tasks);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

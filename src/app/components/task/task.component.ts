@@ -10,7 +10,7 @@ import {Task} from "../../models/task";
   styleUrls: ['./task.component.css']
 })
 export class TaskComponent implements OnInit {
-
+  @Input() shouldShowSubmitButton: boolean = true;
   @Input() users!: User[];
   @Input() task!: Task;
   newTask: Task;

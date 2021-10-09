@@ -1,7 +1,8 @@
 <div class="modal-header">
-  <app-task [task]="task" [users]="users" (taskOutputEvent)="updateTask($event)"></app-task>
+  <app-task [task]="task" [users]="users" (taskOutputEvent)="updateTask($event)" [shouldShowSubmitButton]="false">
+
+  </app-task>
   <div>
-    <button> Save </button>
-    <button (click)="closeModal()"> Close </button>
+    <button (click)="closeModal()" > Close </button>
   </div>
 </div>
