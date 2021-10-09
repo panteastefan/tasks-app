@@ -29,13 +29,12 @@ export class UserTasksTableComponent implements OnInit {
   deleteTask(): void{
     console.log("delete task");
   }
-  openModal() {
+  openModal(task: Task) {
     const modalRef = this.modalService.open(EditTaskModalComponent);
-    modalRef.componentInstance.task = this.tasks[0];
+    modalRef.componentInstance.task = task;
     // this.users = [new User(1, "name", "username")]
     modalRef.componentInstance.users = this.users;
 
-    console.log("user-tasks-table", this.users);
-    console.log("user-tasks-table", this.tasks[0]);
+    console.log("user-tasks-table", task);
   }
 }

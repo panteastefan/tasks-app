@@ -15,7 +15,7 @@
       <td>{{task.dueDate|date: 'dd/MM/yyyy'}}</td>
       <td>{{task.description}}</td>
       <td>
-        <button (click)="openModal()" >open the modal</button>
+        <button (click)="openModal(task)" >open the modal</button>
         <button (click)="editTask()">Edit</button>
         <button (click)="deleteTask()">Delete</button>
       </td>

@@ -13,19 +13,19 @@ export class EditTaskModalComponent implements OnInit {
 
   @Input() task: Task;
   @Input() users: User[];
-  editedTask: Task;
+  updatedTask: Task;
 
   constructor(private taskService: TasksService) { }
 
   ngOnInit(): void {
   }
 
-  editTask(task: Task): void {
-    console.log("edit task:", task);
-    // this.taskService.addTask(task).subscribe(
+  updateTask(task: Task): void {
+    console.log("update task:", task);
+    // this.taskService.updateTask(task).subscribe(
     //   (response: Task) => {
-    //     this.editedTask = response;
-    //     console.log("Added task: ", this.editedTask);
+    //     this.updatedTask = response;
+    //     console.log("Added task: ", this.updatedTask);
     //   },
     //   (error: HttpErrorResponse) => {
     //     alert(error.message);
