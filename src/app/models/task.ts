@@ -7,7 +7,9 @@ export class Task {
   dueDate: Date;
   status: Status;
   username: string;
-  constructor(name: string, description: string, dueDate: Date, status: Status, username: string) {
+
+  constructor(id: number, name: string, description: string, dueDate: Date, status: Status, username: string) {
+    this.id = id;
     this.name = name;
     this.description = description;
     this.dueDate = dueDate;

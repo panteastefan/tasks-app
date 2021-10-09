@@ -30,11 +30,11 @@ export class UserTasksTableComponent implements OnInit {
     console.log("delete task");
   }
   openModal(task: Task) {
+    console.log("user-tasks-table", task);
     const modalRef = this.modalService.open(EditTaskModalComponent);
     modalRef.componentInstance.task = task;
     // this.users = [new User(1, "name", "username")]
     modalRef.componentInstance.users = this.users;
 
-    console.log("user-tasks-table", task);
   }
 }

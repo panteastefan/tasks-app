@@ -13,7 +13,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 })
 export class SearchComponent implements OnInit {
   @Input() users: User[];
-  @Input() task: any;
+  @Input() task: Task;
   public tasks!: Task[];
 
   constructor(private taskService: TasksService) {

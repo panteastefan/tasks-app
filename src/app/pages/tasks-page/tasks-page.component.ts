@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Task} from "../../models/task";
 import {TasksService} from "../../services/tasks/tasks.service";
 import {HttpErrorResponse} from "@angular/common/http";
@@ -12,7 +12,7 @@ import {Status} from "../../models/status";
   styleUrls: ['./tasks-page.component.css']
 })
 export class TasksPageComponent implements OnInit {
-  public task: any;
+  public task: Task;
   public users!: User[];
   public tasks!: Task[];
   constructor(private taskService: TasksService,
@@ -36,23 +36,8 @@ export class TasksPageComponent implements OnInit {
   }
 
   private setTask(): void{
-    // this is just for test. it's gonna be used on EditTask
-    // this.task = {
-    //   'name': 'Task name',
-    //   'description': 'Task description',
-    //   'dueDate': '22/10/2021',
-    //   'status': Status.DONE,
-    //   'user': {
-    //     'name': "Stefan"
-    //   }
-    // }
-    // this.task = null;
-    this.task = {
-      'name': '',
-      'description': '',
-      'dueDate': '',
-      'status': ''
-    }
+  this.task = new Task(0, '', '', new Date(Date.now()),
+    Status.NEW, '');
   }
   public getUsers(): void{
     this.userService.getUsers().subscribe(

@@ -11,7 +11,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 })
 export class NewTaskComponent implements OnInit {
   @Input() users: User[];
-  @Input() task: any;
+  @Input() task: Task;
   addedTask: Task;
 
   constructor(private taskService: TasksService) { }

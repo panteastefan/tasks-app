@@ -12,16 +12,22 @@ import {Task} from "../../models/task";
 export class TaskComponent implements OnInit {
 
   @Input() users!: User[];
-  @Input() task!: any;
+  @Input() task!: Task;
   newTask: Task;
   new: boolean;
   @Output() taskOutputEvent = new EventEmitter<Task>();
   taskForm = this.formBuilder.group({
+    id: '',
     name: '',
     description: '',
-    dueDate: '',
+    dueDate: new Date(Date.now()),
     username: '',
-    status: ''
+    status: Status.NEW
+    // name: this.task.name,
+    // description: this.task.description,
+    // dueDate: this.task.dueDate,
+    // username: this.task.username,
+    // status: this.task.status
   });
 
   keys = Object.keys(Status);
@@ -30,33 +36,12 @@ export class TaskComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {
   }
 
-  public setTask(): void{
-    if (this.task == null){
-      this.task = {
-        'name': '',
-        'description': '',
-        'dueDate': '',
-        'status': '',
-        'username': ''
-      }
-    }
-    // if (this.task.name == ''){
-    //   this.statusValues = this.keys.map(k => Status[k as Status]);
-    //   this.new = true;
-    // }
-    // else{
-    //   // this.statusValues = [Status.NEW];
-    //
-    //   this.statusValues = this.keys.map(k => Status[k as Status]);
-    //   this.new = true;
-    // }
-  }
   submit(): void{
     console.log("submit from task");
     // this.newTask = new Task(this.taskForm.value.name, this.taskForm.value.description,
     //   this.taskForm.value.dueDate, this.taskForm.value.status,
     //   this.taskForm.value.username)
-    this.newTask = new Task(this.taskForm.value.name, this.taskForm.value.description,
+    this.newTask = new Task(this.taskForm.value.id, this.taskForm.value.name, this.taskForm.value.description,
       this.taskForm.value.dueDate, this.taskForm.value.status,
       this.taskForm.value.username)
     console.log(this.newTask);
@@ -64,6 +49,14 @@ export class TaskComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.setTask();
+    console.log("task comp, task: ", this.task);
+    this.taskForm.patchValue({
+      id: this.task.id,
+      name: this.task.name,
+      description: this.task.description,
+      dueDate: this.task.dueDate,
+      username: this.task.username,
+      status: this.task.status
+  });
   }
 }
