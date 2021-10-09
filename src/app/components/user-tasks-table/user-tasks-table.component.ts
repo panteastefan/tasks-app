@@ -14,4 +14,11 @@ export class UserTasksTableComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  editTask(): void{
+    console.log("edit task");
+  }
+
+  deleteTask(): void{
+    console.log("delete task");
+  }
 }

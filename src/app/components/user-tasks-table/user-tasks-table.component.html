@@ -5,6 +5,7 @@
     <th scope="col">Status</th>
     <th scope="col">DueDate</th>
     <th scope="col">Description</th>
+    <th>Action</th>
   </tr>
   </thead>
   <tbody>
@@ -13,6 +14,10 @@
       <td>{{task.status}}</td>
       <td>{{task.dueDate|date: 'dd/MM/yyyy'}}</td>
       <td>{{task.description}}</td>
+      <td>
+        <button (click)="editTask()">Edit</button>
+        <button (click)="deleteTask()">Delete</button>
+      </td>
     </tr>
   </tbody>
 </table>
