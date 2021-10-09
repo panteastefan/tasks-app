@@ -13,6 +13,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { TasksPageComponent } from './pages/tasks-page/tasks-page.component';
 import { NewTaskComponent } from './components/new-task/new-task.component';
+import { EditTaskModelComponentComponent } from './components/edit-task-model-component/edit-task-model-component.component';
+import { EditTaskModalComponent } from './components/edit-task-modal/edit-task-modal.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { NewTaskComponent } from './components/new-task/new-task.component';
     TaskComponent,
     LoginPageComponent,
     TasksPageComponent,
-    NewTaskComponent
+    NewTaskComponent,
+    EditTaskModelComponentComponent,
+    EditTaskModalComponent
   ],
   imports: [
     BrowserModule,
