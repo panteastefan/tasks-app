@@ -3,7 +3,7 @@ import {User} from "../../models/user";
 import {TasksService} from "../../services/tasks/tasks.service";
 import {Task} from "../../models/task";
 import {HttpErrorResponse} from "@angular/common/http";
-import {SearchFilterPipe} from "../../pipe/search-filter.pipe";
+import {SearchFilterPipe} from "../../pipes/search/search-filter.pipe";
 
 @Component({
   selector: 'app-search',

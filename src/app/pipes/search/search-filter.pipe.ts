@@ -1,7 +1,7 @@
 // filter.pipe.ts
 
 import { Pipe, PipeTransform } from '@angular/core';
-import {Task} from "../models/task";
+import {Task} from "../../models/task";
 
 @Pipe({ name: 'appFilter' })
 export class SearchFilterPipe implements PipeTransform {
