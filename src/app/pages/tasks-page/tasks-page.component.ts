@@ -15,6 +15,7 @@ export class TasksPageComponent implements OnInit {
   public task: Task;
   public users!: User[];
   public tasks!: Task[];
+
   constructor(private taskService: TasksService,
               private userService: UsersService) { }
 
@@ -23,6 +24,7 @@ export class TasksPageComponent implements OnInit {
     this.getUsers();
     this.setTask();
   }
+
   public getUserTasks(): void {
     this.taskService.getUserTasks().subscribe(
       (response: Task[]) => {

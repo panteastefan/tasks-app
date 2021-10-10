@@ -34,11 +34,11 @@ export class SearchComponent implements OnInit {
       }
     );
   }
+
   public taskSearch(task: Task): void{
     this.taskSearchFilters = task;
     console.log("task search:", this.taskSearchFilters);
     this.searchFilterPipe.transform(this.tasks, task);
     console.log("task search:", this.tasks);
   }
-
 }

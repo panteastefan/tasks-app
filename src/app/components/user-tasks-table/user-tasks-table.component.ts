@@ -2,17 +2,16 @@ import {Component, Input, OnInit} from '@angular/core';
 import {NgbModal, NgbModalOptions, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 import {EditTaskModalComponent} from "../edit-task-modal/edit-task-modal.component";
 import {User} from "../../models/user";
-
 import {Task} from "../../models/task";
 import {HttpErrorResponse} from "@angular/common/http";
 import {TasksService} from "../../services/tasks/tasks.service";
-import {Status} from "../../models/status";
 
 @Component({
   selector: 'app-user-tasks-table',
   templateUrl: './user-tasks-table.component.html',
   styleUrls: ['./user-tasks-table.component.css']
 })
+
 export class UserTasksTableComponent implements OnInit {
   ngbModalOptions: NgbModalOptions = {
     backdrop : 'static',
@@ -20,9 +19,9 @@ export class UserTasksTableComponent implements OnInit {
   };
   modalRef: NgbModalRef;
   deletedTaskId: number;
+
   @Input() tasks: Task[];
   @Input() users: User[];
-
   @Input() taskSearch: Task;
 
   constructor(private modalService: NgbModal,
@@ -34,7 +33,6 @@ export class UserTasksTableComponent implements OnInit {
   }
 
   deleteTask(taskId: number): void {
-    console.log("delete task:", taskId);
     this.taskService.deleteTask(taskId).subscribe(
       (response: number) => {
         this.deletedTaskId = response;
@@ -45,6 +43,7 @@ export class UserTasksTableComponent implements OnInit {
       }
     );
   }
+
   openModal(task: Task) {
     console.log("user-tasks-table", task);
     this.modalRef = this.modalService.open(EditTaskModalComponent,
