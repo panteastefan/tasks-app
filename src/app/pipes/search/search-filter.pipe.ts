@@ -19,14 +19,14 @@ export class SearchFilterPipe implements PipeTransform {
     }
     const name = taskFilter.name.toLocaleLowerCase();
     const description = taskFilter.description.toLocaleLowerCase();
-    const dueDate = taskFilter.dueDate;
-    console.log("due date: ", dueDate)
+    // const dueDate = taskFilter.dueDate;
+    // console.log("due date: ", dueDate)
     const username = taskFilter.username.toLocaleLowerCase();
     const status = taskFilter.status;
 
 
     return tasks.filter(task => {
-      console.log(task.dueDate)
+      // console.log(task.dueDate)
       return task.name.toLocaleLowerCase().includes(name) &&
             task.description.toLocaleLowerCase().includes(description) &&
             task.username.toLocaleLowerCase().includes(username) &&

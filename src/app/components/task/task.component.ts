@@ -1,4 +1,14 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChange,
+  SimpleChanges
+} from '@angular/core';
 import {Status} from "../../models/status";
 import {User} from "../../models/user";
 import {FormBuilder} from "@angular/forms";
@@ -7,9 +17,10 @@ import {Task} from "../../models/task";
 @Component({
   selector: 'app-task',
   templateUrl: './task.component.html',
-  styleUrls: ['./task.component.css']
+  styleUrls: ['./task.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TaskComponent implements OnInit {
+export class TaskComponent implements OnInit, OnChanges {
   @Input() shouldShowSubmitButton: boolean = true;
   @Input() users!: User[];
   @Input() task!: Task;
@@ -56,8 +67,7 @@ export class TaskComponent implements OnInit {
     this.taskOutputEvent.emit(this.newTask);
   }
 
-  ngOnInit(): void {
-    console.log("task comp, task: ", this.task);
+  private updateForm(): void{
     this.taskForm.patchValue({
       id: this.task.id,
       name: this.task.name,
@@ -65,6 +75,19 @@ export class TaskComponent implements OnInit {
       dueDate: this.task.dueDate,
       username: this.task.username,
       status: this.task.status
-  });
+    });
+  }
+
+  ngOnInit(): void {
+    console.log("task comp, task: ", this.task);
+    this.task = new Task(0, '', '', new Date(Date.now()), Status.NEW, '');
+
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log("changes: ", SimpleChange);
+    console.log("task comp on change, task: ", this.task);
+    this.updateForm()
+    this.taskSearchOutputEvent.emit(this.task);
   }
 }

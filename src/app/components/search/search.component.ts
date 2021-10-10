@@ -4,6 +4,7 @@ import {TasksService} from "../../services/tasks/tasks.service";
 import {Task} from "../../models/task";
 import {HttpErrorResponse} from "@angular/common/http";
 import {SearchFilterPipe} from "../../pipes/search/search-filter.pipe";
+import {Status} from "../../models/status";
 
 @Component({
   selector: 'app-search',
@@ -15,6 +16,7 @@ export class SearchComponent implements OnInit {
   @Input() task: Task;
   public tasks!: Task[];
   public taskSearchFilters: Task;
+
 
   constructor(private taskService: TasksService, private searchFilterPipe: SearchFilterPipe) {
   }
@@ -37,8 +39,11 @@ export class SearchComponent implements OnInit {
 
   public taskSearch(task: Task): void{
     this.taskSearchFilters = task;
-    console.log("task search:", this.taskSearchFilters);
     this.searchFilterPipe.transform(this.tasks, task);
-    console.log("task search:", this.tasks);
+  }
+
+  public resetSearchFilters(): void{
+    this.task = new Task(0, '', '', new Date(Date.now()), Status.NEW, '');
+    this.searchFilterPipe.transform(this.tasks, this.task);
   }
 }
