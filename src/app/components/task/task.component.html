@@ -52,5 +52,6 @@
       </ng-container>
     </select>
   </div>
+  <button (click)="taskSearchSubmit()" type="submit">{{shouldShowSubmitButton?"taskSearchSubmit":"Save"}}</button>
   <button (click)="submit()" type="submit">{{shouldShowSubmitButton?"Submit":"Save"}}</button>
 </form>

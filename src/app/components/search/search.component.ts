@@ -1,10 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {User} from "../../models/user";
-import {UsersService} from "../../services/users/users.service";
-import {Status} from "../../models/status";
 import {TasksService} from "../../services/tasks/tasks.service";
 import {Task} from "../../models/task";
 import {HttpErrorResponse} from "@angular/common/http";
+import {SearchFilterPipe} from "../../pipe/search-filter.pipe";
 
 @Component({
   selector: 'app-search',
@@ -15,8 +14,9 @@ export class SearchComponent implements OnInit {
   @Input() users: User[];
   @Input() task: Task;
   public tasks!: Task[];
+  public taskSearchFilters: Task;
 
-  constructor(private taskService: TasksService) {
+  constructor(private taskService: TasksService, private searchFilterPipe: SearchFilterPipe) {
   }
 
   ngOnInit(): void {
@@ -34,4 +34,11 @@ export class SearchComponent implements OnInit {
       }
     );
   }
+  public taskSearch(task: Task): void{
+    this.taskSearchFilters = task;
+    console.log("task search:", this.taskSearchFilters);
+    this.searchFilterPipe.transform(this.tasks, task);
+    console.log("task search:", this.tasks);
+  }
+
 }

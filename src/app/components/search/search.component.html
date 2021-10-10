@@ -1,6 +1,7 @@
 <html>
 <div>
-  <app-task [users]="users" [task]="task"></app-task>
+  <app-task [users]="users" [task]="task" [isSearch]="true"
+            (taskSearchOutputEvent)="taskSearch($event)"></app-task>
 </div>
 <div>
   <button>Submit</button>
@@ -8,6 +9,6 @@
 </div>
 
 <div>
-  <app-user-tasks-table [tasks]="tasks" [users]="users"></app-user-tasks-table>
+  <app-user-tasks-table [tasks]="tasks" [users]="users" [taskSearch]="taskSearchFilters"></app-user-tasks-table>
 </div>
 </html>

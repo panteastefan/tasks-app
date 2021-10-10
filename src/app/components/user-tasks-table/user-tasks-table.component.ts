@@ -6,6 +6,7 @@ import {User} from "../../models/user";
 import {Task} from "../../models/task";
 import {HttpErrorResponse} from "@angular/common/http";
 import {TasksService} from "../../services/tasks/tasks.service";
+import {Status} from "../../models/status";
 
 @Component({
   selector: 'app-user-tasks-table',
@@ -21,6 +22,8 @@ export class UserTasksTableComponent implements OnInit {
   deletedTaskId: number;
   @Input() tasks: Task[];
   @Input() users: User[];
+
+  @Input() taskSearch: Task;
 
   constructor(private modalService: NgbModal,
               private taskService: TasksService) {
