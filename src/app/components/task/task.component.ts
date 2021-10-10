@@ -13,12 +13,15 @@ export class TaskComponent implements OnInit {
   @Input() shouldShowSubmitButton: boolean = true;
   @Input() users!: User[];
   @Input() task!: Task;
-  newTask: Task;
-  new: boolean;
   @Input() isSearch: boolean = false;
   @Output() taskOutputEvent = new EventEmitter<Task>();
   @Output() taskSearchOutputEvent = new EventEmitter<Task>();
+
+  newTask: Task;
   taskSearchFilters: Task;
+  keys = Object.keys(Status);
+  statusValues = this.keys.map(k => Status[k as Status]);
+
   taskForm = this.formBuilder.group({
     id: '',
     name: '',
@@ -28,36 +31,27 @@ export class TaskComponent implements OnInit {
     status: Status.NEW
   });
 
-  keys = Object.keys(Status);
-  statusValues = this.keys.map(k => Status[k as Status]);
-
   constructor(private formBuilder: FormBuilder) {
   }
 
-  taskSearchSubmit(): void{
-    console.log("submit from task search");
-    this.taskSearchFilters =
-      new Task(this.taskForm.value.id,
+  getTaskFromForm(): Task{
+    return new Task(this.taskForm.value.id,
       this.taskForm.value.name,
       this.taskForm.value.description,
       this.taskForm.value.dueDate,
       this.taskForm.value.status,
       this.taskForm.value.username)
-    console.log(this.taskSearchFilters);
+  }
+
+  taskSearchSubmit(): void{
+    this.taskSearchFilters = this.getTaskFromForm()
+    console.log("submit from task search", this.taskSearchFilters);
     this.taskSearchOutputEvent.emit(this.taskSearchFilters);
   }
 
   submit(): void{
     console.log("submit from task");
-    // this.newTask = new Task(this.taskForm.value.name, this.taskForm.value.description,
-    //   this.taskForm.value.dueDate, this.taskForm.value.status,
-    //   this.taskForm.value.username)
-    this.newTask = new Task(this.taskForm.value.id,
-      this.taskForm.value.name,
-      this.taskForm.value.description,
-      this.taskForm.value.dueDate,
-      this.taskForm.value.status,
-      this.taskForm.value.username)
+    this.newTask = this.getTaskFromForm()
     console.log(this.newTask);
     this.taskOutputEvent.emit(this.newTask);
   }

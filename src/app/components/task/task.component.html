@@ -34,14 +34,6 @@
       Status
     </label>
     <select id="status" class="form-control" formControlName="status">
-<!--      <option *ngIf="this.new"-->
-<!--              [ngValue]="statusValues[0]"-->
-<!--              [selected]="statusValues[0]"-->
-<!--              [label]="statusValues[0]">-->
-<!--        {{statusValues[0]}}-->
-<!--      </option>-->
-      <ng-container  *ngIf="!this.new">
-
         <option
           *ngFor="let status of statusValues"
           [selected]="task.status == status"
@@ -49,7 +41,6 @@
           [label]="status">
           {{task.status}}
         </option>
-      </ng-container>
     </select>
   </div>
   <button (click)="taskSearchSubmit()" type="submit">{{shouldShowSubmitButton?"taskSearchSubmit":"Save"}}</button>
