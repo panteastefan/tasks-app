@@ -6,7 +6,6 @@ import {
   OnChanges,
   OnInit,
   Output,
-  SimpleChange,
   SimpleChanges
 } from '@angular/core';
 import {Status} from "../../models/status";
@@ -45,7 +44,7 @@ export class TaskComponent implements OnInit, OnChanges {
   constructor(private formBuilder: FormBuilder) {
   }
 
-  getTaskFromForm(): Task{
+  getTaskFromForm(): Task {
     return new Task(this.taskForm.value.id,
       this.taskForm.value.name,
       this.taskForm.value.description,
@@ -54,20 +53,20 @@ export class TaskComponent implements OnInit, OnChanges {
       this.taskForm.value.username)
   }
 
-  taskSearchSubmit(): void{
+  taskSearchSubmit(): void {
     this.taskSearchFilters = this.getTaskFromForm()
     console.log("submit from task search", this.taskSearchFilters);
     this.taskSearchOutputEvent.emit(this.taskSearchFilters);
   }
 
-  submit(): void{
+  submit(): void {
     console.log("submit from task");
     this.newTask = this.getTaskFromForm()
     console.log(this.newTask);
     this.taskOutputEvent.emit(this.newTask);
   }
 
-  private updateForm(): void{
+  private updateForm(): void {
     this.taskForm.patchValue({
       id: this.task.id,
       name: this.task.name,
@@ -85,8 +84,6 @@ export class TaskComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("changes: ", SimpleChange);
-    console.log("task comp on change, task: ", this.task);
     this.updateForm()
     this.taskSearchOutputEvent.emit(this.task);
   }
