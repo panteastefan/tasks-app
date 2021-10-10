@@ -18,8 +18,13 @@
   <div class="form-group">
     <label for="username">Assigned to user</label>
     <select id="username" class="form-control" formControlName="username">
-      <option value="" disabled selected>Select user</option>
-<!--      <option selected disabled>Select user</option>-->
+
+      <ng-container *ngIf="componentType != ComponentType.SEARCH">
+        <option value="" disabled selected>Select user</option>
+      </ng-container>
+      <ng-container *ngIf="componentType == ComponentType.SEARCH">
+        <option value="" selected>anyone</option>
+      </ng-container>
       <option *ngFor="let user of users"
               [selected]="user.username"
               [ngValue]="user.username"
@@ -34,13 +39,25 @@
       Status
     </label>
     <select id="status" class="form-control" formControlName="status">
-        <option
+        <ng-container *ngIf="componentType == ComponentType.SEARCH">
+          <option value="" disabled selected>Select status</option>
+          <option
+            *ngFor="let status of statusValues"
+            [ngValue]="status"
+            [label]="status">
+            {{task.status}}
+           </option>
+        </ng-container>
+
+        <ng-container  *ngIf="componentType != ComponentType.SEARCH">
+          <option
           *ngFor="let status of statusValues"
           [selected]="task.status == status"
           [ngValue]="status"
           [label]="status">
           {{task.status}}
-        </option>
+          </option>
+        </ng-container >
     </select>
   </div>
   <div>
