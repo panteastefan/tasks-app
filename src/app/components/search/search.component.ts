@@ -5,6 +5,7 @@ import {Task} from "../../models/task";
 import {HttpErrorResponse} from "@angular/common/http";
 import {SearchFilterPipe} from "../../pipes/search/search-filter.pipe";
 import {Status} from "../../models/status";
+import {ComponentType} from "../../models/component-type";
 
 @Component({
   selector: 'app-search',
@@ -16,6 +17,7 @@ export class SearchComponent implements OnInit {
   @Input() task: Task;
   public tasks!: Task[];
   public taskSearchFilters: Task;
+  componentType: ComponentType = ComponentType.SEARCH;
 
 
   constructor(private taskService: TasksService, private searchFilterPipe: SearchFilterPipe) {

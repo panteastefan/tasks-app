@@ -12,6 +12,7 @@ import {Status} from "../../models/status";
 import {User} from "../../models/user";
 import {FormBuilder} from "@angular/forms";
 import {Task} from "../../models/task";
+import {ComponentType} from "../../models/component-type";
 
 @Component({
   selector: 'app-task',
@@ -24,9 +25,11 @@ export class TaskComponent implements OnInit, OnChanges {
   @Input() users!: User[];
   @Input() task!: Task;
   @Input() isSearch: boolean = false;
+  @Input() componentType: ComponentType = ComponentType.NONE;
   @Output() taskOutputEvent = new EventEmitter<Task>();
   @Output() taskSearchOutputEvent = new EventEmitter<Task>();
 
+  ComponentType = ComponentType;
   newTask: Task;
   taskSearchFilters: Task;
   keys = Object.keys(Status);
@@ -78,9 +81,9 @@ export class TaskComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    console.log("task comp, task: ", this.task);
-    this.task = new Task(0, '', '', new Date(Date.now()), Status.NEW, '');
-
+      if(this.componentType == ComponentType.NEW) {
+        this.statusValues = [this.statusValues[0]];
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {

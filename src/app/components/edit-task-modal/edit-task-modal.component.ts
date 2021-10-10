@@ -4,6 +4,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {TasksService} from "../../services/tasks/tasks.service";
 import {User} from "../../models/user";
 import {NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
+import {ComponentType} from "../../models/component-type";
 
 @Component({
   selector: 'app-edit-task-modal',
@@ -11,6 +12,7 @@ import {NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
   styleUrls: ['./edit-task-modal.component.css']
 })
 export class EditTaskModalComponent implements OnInit {
+  componentType: ComponentType = ComponentType.EDIT;
   @Input() modalRef: NgbModalRef;
   @Input() task: Task;
   @Input() users: User[];

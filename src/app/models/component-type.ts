@@ -1,4 +1,4 @@
-export enum ParentType{
+export enum ComponentType{
   NONE,
   EDIT,
   NEW,

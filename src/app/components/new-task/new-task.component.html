@@ -1,4 +1,6 @@
 <div>
   <app-task [users]="users" [task]="task"
-            (taskOutputEvent)="addTask($event)"></app-task>
+            (taskOutputEvent)="addTask($event)"
+            [componentType]="componentType">
+  </app-task>
 </div>

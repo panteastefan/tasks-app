@@ -43,6 +43,20 @@
         </option>
     </select>
   </div>
-  <button (click)="taskSearchSubmit()" type="submit">{{shouldShowSubmitButton?"taskSearchSubmit":"Save"}}</button>
-  <button (click)="submit()" type="submit">{{shouldShowSubmitButton?"Submit":"Save"}}</button>
+  <div>
+    <div [ngSwitch]="this.componentType">
+      <div *ngSwitchCase="ComponentType.SEARCH">
+        <button (click)="taskSearchSubmit()" type="submit">Submit</button>
+      </div>
+
+      <div *ngSwitchCase="ComponentType.EDIT">
+        <button (click)="submit()" type="submit">Save</button>
+      </div>
+
+      <div *ngSwitchCase="ComponentType.NEW">
+        <button (click)="submit()" type="submit">Submit</button>
+      </div>
+
+    </div>
+  </div>
 </form>

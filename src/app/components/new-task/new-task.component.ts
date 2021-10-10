@@ -3,6 +3,7 @@ import {User} from "../../models/user";
 import {Task} from "../../models/task";
 import {TasksService} from "../../services/tasks/tasks.service";
 import {HttpErrorResponse} from "@angular/common/http";
+import {ComponentType} from "../../models/component-type";
 
 @Component({
   selector: 'app-new-task',
@@ -13,6 +14,7 @@ export class NewTaskComponent implements OnInit {
   @Input() users: User[];
   @Input() task: Task;
   addedTask: Task;
+  componentType: ComponentType = ComponentType.NEW;
 
   constructor(private taskService: TasksService) { }
 

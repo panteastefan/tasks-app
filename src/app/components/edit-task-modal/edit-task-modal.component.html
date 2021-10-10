@@ -1,7 +1,8 @@
 <div class="modal-header">
   <app-task [task]="task" [users]="users"
             (taskOutputEvent)="updateTask($event)"
-            [shouldShowSubmitButton]="false">
+            [shouldShowSubmitButton]="false"
+            [componentType]="componentType">
 
   </app-task>
   <div>
