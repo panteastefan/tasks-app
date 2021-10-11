@@ -20,3 +20,9 @@
   background-color: #f3f3f3;
 }
 
+.custom-modal {
+  background: black;
+  padding: 3px;
+  border-radius: 5px;
+}
+

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {NgbModal, NgbModalOptions, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 import {EditTaskModalComponent} from "../edit-task-modal/edit-task-modal.component";
 import {User} from "../../models/user";
@@ -9,13 +9,16 @@ import {TasksService} from "../../services/tasks/tasks.service";
 @Component({
   selector: 'app-user-tasks-table',
   templateUrl: './user-tasks-table.component.html',
-  styleUrls: ['./user-tasks-table.component.css']
+  styleUrls: ['./user-tasks-table.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class UserTasksTableComponent implements OnInit {
   ngbModalOptions: NgbModalOptions = {
     backdrop : 'static',
-    keyboard : false
+    keyboard : false,
+    size: 'lg',
+    modalDialogClass: 'custom-modal'
   };
   modalRef: NgbModalRef;
   deletedTaskId: number;
