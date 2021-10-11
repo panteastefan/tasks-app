@@ -16,7 +16,8 @@
         <label for="description">Description</label>
       </div>
       <div class="col-75">
-        <textarea class="form-control" id="description" formControlName="description" [value]="task.description" rows="3"></textarea>
+        <textarea class="form-control" id="description" formControlName="description"
+                  [value]="task.description" rows="3"></textarea>
       </div>
     </div>
 
@@ -25,7 +26,8 @@
         <label for="dueDate">DueDate</label>
       </div>
       <div class="col-75">
-        <input type="date" id="dueDate" class="form-control" formControlName="dueDate" [value]="task.dueDate" placeholder="dd/mm/yyy">
+        <input type="date" id="dueDate" class="form-control" formControlName="dueDate"
+               [ngModel]="task.dueDate | date:'yyyy-MM-dd'" placeholder="dd/mm/yyy">
       </div>
     </div>
 

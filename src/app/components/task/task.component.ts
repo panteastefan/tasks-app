@@ -39,7 +39,7 @@ export class TaskComponent implements OnInit, OnChanges {
     id: '',
     name: '',
     description: '',
-    dueDate: new Date(Date.now()),
+    dueDate: '',
     username: '',
     status: Status.NEW
   });

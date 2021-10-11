@@ -13,7 +13,7 @@
       <tr *ngFor="let task of tasks | appFilter: taskSearch" >
         <td>{{task.name}}</td>
         <td>{{task.status}}</td>
-        <td>{{task.dueDate|date: 'dd/MM/yyyy'}}</td>
+        <td>{{task.dueDate|date: 'MM/dd/yyyy'}}</td>
         <td>{{task.description}}</td>
         <td>
           <div class="btn-group">

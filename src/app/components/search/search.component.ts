@@ -45,7 +45,7 @@ export class SearchComponent implements OnInit {
   }
 
   public resetSearchFilters(): void{
-    this.task = new Task(0, '', '', new Date(Date.now()), Status.NEW, '');
+    this.task = new Task(0, '', '', new Date(), Status.NEW, '');
     this.searchFilterPipe.transform(this.tasks, this.task);
   }
 }
