@@ -1,15 +1,18 @@
 <html>
-  <form [formGroup]="loginForm">
-    <div class="form-group">
-      <label for="username">Username</label>
-      <input type="text" class="form-control" id="username" formControlName="username">
-    </div>
+  <div class="login">
+    <h1>Login</h1>
+    <form [formGroup]="loginForm">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" formControlName="username">
+      </div>
 
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" formControlName="password">
-    </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" formControlName="password">
+      </div>
 
-    <input type="submit" value="Submit" (click)="onSubmit()">
-  </form>
+      <input class="submit" type="submit" value="Submit" (click)="onSubmit()">
+    </form>
+  </div>
 </html>
