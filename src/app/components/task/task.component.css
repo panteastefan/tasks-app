@@ -15,3 +15,17 @@ label {
   padding-top: 10px;
   display: inline-block;
 }
+
+.button {
+  background-color: #566359;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}

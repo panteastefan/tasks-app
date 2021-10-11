@@ -1,11 +1,13 @@
 <html>
-  <div class="modal-header">
-    <app-task [task]="task" [users]="users"
-              (taskOutputEvent)="updateTask($event)"
-              [shouldShowSubmitButton]="false"
-              [componentType]="componentType">
+  <div>
+    <div>
+      <app-task [task]="task" [users]="users"
+                (taskOutputEvent)="updateTask($event)"
+                [shouldShowSubmitButton]="false"
+                [componentType]="componentType">
 
-    </app-task>
+      </app-task>
+    </div>
     <div>
       <button (click)="closeModal()" > Close </button>
     </div>

@@ -84,15 +84,15 @@
     <div>
       <div [ngSwitch]="this.componentType">
         <div *ngSwitchCase="ComponentType.SEARCH">
-          <button (click)="taskSearchSubmit()" type="submit">Submit</button>
+          <button class="button" (click)="taskSearchSubmit()" type="submit">Submit</button>
         </div>
 
         <div *ngSwitchCase="ComponentType.EDIT">
-          <button (click)="submit()" type="submit">Save</button>
+          <button class="button" (click)="submit()" type="submit">Save</button>
         </div>
 
         <div *ngSwitchCase="ComponentType.NEW">
-          <button (click)="submit()" type="submit">Submit</button>
+          <button class="button" (click)="submit()" type="submit">Submit</button>
         </div>
 
       </div>
