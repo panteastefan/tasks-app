@@ -1,18 +1,18 @@
 <html>
-<div>
-  <app-task [users]="users" [task]="task" [isSearch]="true"
-            (taskSearchOutputEvent)="taskSearch($event)"
-            [componentType]="componentType">
-  </app-task>
-</div>
+  <div>
+    <app-task [users]="users" [task]="task" [isSearch]="true"
+              (taskSearchOutputEvent)="taskSearch($event)"
+              [componentType]="componentType">
+    </app-task>
+  </div>
 
-<div>
-  <button (click)="resetSearchFilters()">Reset</button>
-</div>
+  <div>
+    <button (click)="resetSearchFilters()">Reset</button>
+  </div>
 
-<div>
-  <app-user-tasks-table
-    [tasks]="tasks" [users]="users" [taskSearch]="taskSearchFilters">
-  </app-user-tasks-table>
-</div>
+  <div>
+    <app-user-tasks-table
+      [tasks]="tasks" [users]="users" [taskSearch]="taskSearchFilters">
+    </app-user-tasks-table>
+  </div>
 </html>

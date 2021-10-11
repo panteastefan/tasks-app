@@ -1,24 +1,26 @@
-<table class="table">
-  <thead>
-  <tr>
-    <th scope="col">Name</th>
-    <th scope="col">Status</th>
-    <th scope="col">DueDate</th>
-    <th scope="col">Description</th>
-    <th>Action</th>
-  </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let task of tasks | appFilter: taskSearch" >
-      <td>{{task.name}}</td>
-      <td>{{task.status}}</td>
-      <td>{{task.dueDate|date: 'dd/MM/yyyy'}}</td>
-      <td>{{task.description}}</td>
-      <td>
-          <button (click)="openModal(task)">Edit</button>
-          <button (click)="deleteTask(task.id)">Delete</button>
-
-      </td>
+<html>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Status</th>
+      <th scope="col">DueDate</th>
+      <th scope="col">Description</th>
+      <th>Action</th>
     </tr>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks | appFilter: taskSearch" >
+        <td>{{task.name}}</td>
+        <td>{{task.status}}</td>
+        <td>{{task.dueDate|date: 'dd/MM/yyyy'}}</td>
+        <td>{{task.description}}</td>
+        <td>
+            <button (click)="openModal(task)">Edit</button>
+            <button (click)="deleteTask(task.id)">Delete</button>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</html>

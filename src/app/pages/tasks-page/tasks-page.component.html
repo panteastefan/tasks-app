@@ -1,16 +1,18 @@
-<div>
-  <h1> Tasks application </h1>
-  <tabset class="member-tabset">
-    <tab heading="My Tasks">
-      <app-user-tasks-table [users]="users" [tasks]=tasks></app-user-tasks-table>
-    </tab>
+<html>
+  <div>
+    <h1> Tasks application </h1>
+    <tabset class="member-tabset">
+      <tab heading="My Tasks">
+        <app-user-tasks-table [users]="users" [tasks]=tasks></app-user-tasks-table>
+      </tab>
 
-    <tab heading="Search">
-      <app-search  [users]="users" [task]="task"></app-search>
-    </tab>
+      <tab heading="Search">
+        <app-search  [users]="users" [task]="task"></app-search>
+      </tab>
 
-    <tab heading="New Task">
-      <app-new-task [users]="users" [task]="task"></app-new-task>
-    </tab>
-  </tabset>
-</div>
+      <tab heading="New Task">
+        <app-new-task [users]="users" [task]="task"></app-new-task>
+      </tab>
+    </tabset>
+  </div>
+</html>
