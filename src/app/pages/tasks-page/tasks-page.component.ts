@@ -38,7 +38,7 @@ export class TasksPageComponent implements OnInit {
   }
 
   private setTask(): void{
-  this.task = new Task(0, '', '', new Date(),
+  this.task = new Task(0, '', '', new Date(Date.now()).toISOString().substring(0, 10),
     Status.NEW, '');
   }
   public getUsers(): void{
