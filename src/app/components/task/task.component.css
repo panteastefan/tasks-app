@@ -12,7 +12,6 @@
 }
 
 div {
-  padding-bottom: 6px;
   padding-top: 6px;
 }
 
@@ -24,7 +23,12 @@ label {
 .button {
   background-color: #566359;
   color: white;
-  border-radius: 8px;
+  margin-top: 12px;
+  border-radius: 12px;
   padding: 6px;
   cursor: pointer;
+}
+
+.button:hover {
+  background-color: #7c8a80;
 }
