@@ -5,12 +5,10 @@
       <app-task [task]="task" [users]="users"
                 (taskOutputEvent)="updateTask($event)"
                 [shouldShowSubmitButton]="false"
-                [componentType]="componentType">
+                [componentType]="componentType"
+                (closeModal)="closeModal()">
 
       </app-task>
-    </div>
-    <div>
-      <button (click)="closeModal()" > Close </button>
     </div>
   </div>
 </html>

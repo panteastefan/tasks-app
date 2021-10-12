@@ -29,6 +29,7 @@ export class TaskComponent implements OnInit, OnChanges {
   @Output() taskOutputEvent = new EventEmitter<Task>();
   @Output() taskSearchOutputEvent = new EventEmitter<Task>();
   @Output("resetSearchFilters") resetFilters: EventEmitter<any> = new EventEmitter();
+  @Output("closeModal") clsModal: EventEmitter<any> = new EventEmitter();
 
   ComponentType = ComponentType;
   newTask: Task;
@@ -97,6 +98,6 @@ export class TaskComponent implements OnInit, OnChanges {
   }
 
   closeModal() {
-
+    this.clsModal.emit();
   }
 }
