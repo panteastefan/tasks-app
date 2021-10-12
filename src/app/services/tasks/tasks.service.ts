@@ -24,19 +24,16 @@ export class TasksService {
   }
 
   public addTask(taskCreationDTO: Task): Observable<Task> {
-    console.log({userToken: this.cookieService.get("lgnck"), taskCreationDTO});
       return this.http.post<Task>(`${this.apiServerUrl}/tasks/add`,
         {userToken: this.cookieService.get("lgnck"), taskCreationDTO});
   }
 
   public updateTask(taskCreationDTO: Task): Observable<Task> {
-    console.log({userToken: this.cookieService.get("lgnck"), taskCreationDTO});
     return this.http.post<Task>(`${this.apiServerUrl}/tasks/update`,
       {userToken: this.cookieService.get("lgnck"), taskCreationDTO});
   }
 
   public deleteTask(taskId: number): Observable<number> {
-    console.log({userToken: this.cookieService.get("lgnck"), taskId});
     return this.http.post<number>(`${this.apiServerUrl}/tasks/delete`,
       {userToken: this.cookieService.get("lgnck"), taskId});
   }

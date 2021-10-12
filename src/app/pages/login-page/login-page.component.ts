@@ -24,10 +24,8 @@ export class LoginPageComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.loginForm.value.username, this.loginForm.value.password);
     this.loginService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe(
       (response: any) => {
-        console.log(response);
         this.cookieService.set("lgnck", response.loginToken);
         this.router.navigateByUrl("/tasks");
         },

@@ -25,11 +25,9 @@ export class EditTaskModalComponent implements OnInit {
   }
 
   updateTask(task: Task): void {
-    console.log("update task:", task);
     this.taskService.updateTask(task).subscribe(
       (response: Task) => {
         this.updatedTask = response;
-        console.log("updated task: ", this.updatedTask);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

@@ -39,7 +39,6 @@ export class UserTasksTableComponent implements OnInit {
     this.taskService.deleteTask(taskId).subscribe(
       (response: number) => {
         this.deletedTaskId = response;
-        console.log("deleted task id: ", this.deletedTaskId);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -48,7 +47,6 @@ export class UserTasksTableComponent implements OnInit {
   }
 
   openModal(task: Task) {
-    console.log("user-tasks-table", task);
     this.modalRef = this.modalService.open(EditTaskModalComponent,
                                             this.ngbModalOptions);
     this.modalRef.componentInstance.task = task;

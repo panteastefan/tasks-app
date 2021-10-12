@@ -22,11 +22,9 @@ export class NewTaskComponent implements OnInit {
   }
 
   addTask(task: Task): void {
-    console.log("new task:", task);
     this.taskService.addTask(task).subscribe(
       (response: Task) => {
         this.addedTask = response;
-        console.log("Added task: ", this.addedTask);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

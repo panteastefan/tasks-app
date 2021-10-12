@@ -60,14 +60,11 @@ export class TaskComponent implements OnInit, OnChanges {
 
   taskSearchSubmit(): void {
     this.taskSearchFilters = this.getTaskFromForm()
-    console.log("submit from task search", this.taskSearchFilters);
     this.taskSearchOutputEvent.emit(this.taskSearchFilters);
   }
 
   submit(): void {
-    console.log("submit from task");
     this.newTask = this.getTaskFromForm()
-    console.log(this.newTask);
     this.taskOutputEvent.emit(this.newTask);
   }
 
