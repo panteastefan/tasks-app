@@ -100,10 +100,12 @@
       <div [ngSwitch]="this.componentType">
         <div *ngSwitchCase="ComponentType.SEARCH">
           <button class="button" (click)="taskSearchSubmit()" type="submit">Submit</button>
+          <button class="button" (click)="resetSearchFilter()" type="submit">Reset</button>
         </div>
 
         <div *ngSwitchCase="ComponentType.EDIT">
           <button class="button" (click)="submit()" type="submit">Save</button>
+          <button class="button" (click)="closeModal()" type="submit">Close</button>
         </div>
 
         <div *ngSwitchCase="ComponentType.NEW">

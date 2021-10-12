@@ -2,12 +2,9 @@
   <div>
     <app-task [users]="users" [task]="task" [isSearch]="true"
               (taskSearchOutputEvent)="taskSearch($event)"
-              [componentType]="componentType">
+              [componentType]="componentType"
+              (resetSearchFilters)="resetSearchFilters()">
     </app-task>
-  </div>
-
-  <div>
-    <button (click)="resetSearchFilters()">Reset</button>
   </div>
 
   <div>

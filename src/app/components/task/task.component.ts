@@ -28,6 +28,7 @@ export class TaskComponent implements OnInit, OnChanges {
   @Input() componentType: ComponentType = ComponentType.NONE;
   @Output() taskOutputEvent = new EventEmitter<Task>();
   @Output() taskSearchOutputEvent = new EventEmitter<Task>();
+  @Output("resetSearchFilters") resetFilters: EventEmitter<any> = new EventEmitter();
 
   ComponentType = ComponentType;
   newTask: Task;
@@ -89,5 +90,13 @@ export class TaskComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     this.updateForm()
     this.taskSearchOutputEvent.emit(this.task);
+  }
+
+  resetSearchFilter() {
+    this.resetFilters.emit();
+  }
+
+  closeModal() {
+
   }
 }
