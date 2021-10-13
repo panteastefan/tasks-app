@@ -5,6 +5,7 @@ import {TasksService} from "../../services/tasks/tasks.service";
 import {User} from "../../models/user";
 import {NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 import {ComponentType} from "../../models/component-type";
+import {TasksTableControlService} from "../../services/tasks-table-control/tasks-table-control.service";
 
 @Component({
   selector: 'app-edit-task-modal',
@@ -19,7 +20,8 @@ export class EditTaskModalComponent implements OnInit {
   @Output() modalOutputEvent = new EventEmitter<NgbModalRef>();
   updatedTask: Task;
 
-  constructor(private taskService: TasksService) { }
+  constructor(private taskService: TasksService,
+              private tasksTableService: TasksTableControlService) { }
 
   ngOnInit(): void {
   }
@@ -28,6 +30,8 @@ export class EditTaskModalComponent implements OnInit {
     this.taskService.updateTask(task).subscribe(
       (response: Task) => {
         this.updatedTask = response;
+        this.tasksTableService.eventUpdateUserTasks();
+        this.tasksTableService.eventUpdateTasks();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

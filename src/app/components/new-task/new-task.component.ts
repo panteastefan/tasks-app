@@ -4,6 +4,7 @@ import {Task} from "../../models/task";
 import {TasksService} from "../../services/tasks/tasks.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {ComponentType} from "../../models/component-type";
+import {TasksTableControlService} from "../../services/tasks-table-control/tasks-table-control.service";
 
 @Component({
   selector: 'app-new-task',
@@ -16,7 +17,8 @@ export class NewTaskComponent implements OnInit {
   addedTask: Task;
   componentType: ComponentType = ComponentType.NEW;
 
-  constructor(private taskService: TasksService) { }
+  constructor(private taskService: TasksService,
+              private tasksTableService: TasksTableControlService) { }
 
   ngOnInit(): void {
   }
@@ -25,6 +27,8 @@ export class NewTaskComponent implements OnInit {
     this.taskService.addTask(task).subscribe(
       (response: Task) => {
         this.addedTask = response;
+        this.tasksTableService.eventUpdateUserTasks();
+        this.tasksTableService.eventUpdateTasks();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

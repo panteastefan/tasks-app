@@ -13,6 +13,7 @@ import {User} from "../../models/user";
 import {FormBuilder} from "@angular/forms";
 import {Task} from "../../models/task";
 import {ComponentType} from "../../models/component-type";
+import {TasksTableControlService} from "../../services/tasks-table-control/tasks-table-control.service";
 
 @Component({
   selector: 'app-task',
@@ -50,7 +51,8 @@ export class TaskComponent implements OnInit, OnChanges {
     status: Status.NEW
   });
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private tasksTableService: TasksTableControlService) {
   }
 
   // gets the task input values and returns the Task
@@ -80,7 +82,7 @@ export class TaskComponent implements OnInit, OnChanges {
 
   // add or edit task -- form confirm button
   submitTask(): void {
-    this.confirmTask = this.getTaskFromForm()
+    this.confirmTask = this.getTaskFromForm();
     this.taskSubmitEvent.emit(this.confirmTask);
   }
 
