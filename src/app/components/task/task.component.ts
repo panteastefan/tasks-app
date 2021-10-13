@@ -20,7 +20,7 @@ import {ComponentType} from "../../models/component-type";
   styleUrls: ['./task.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TaskComponent implements OnInit {
+export class TaskComponent implements OnInit, OnChanges {
   @Input() users!: User[];
   // task that is showed as form input
   @Input() task!: Task;
@@ -103,6 +103,12 @@ export class TaskComponent implements OnInit {
     this.taskSearchEvent.emit(this.task);
   }
 
+  // after this.task modifies
+  ngOnChanges(changes: SimpleChanges): void {
+    // updates the form everytime task gets changed
+    this.updateForm()
+  }
+  
   // emits to closeModal() from edit Task
   closeModal() {
     this.clsModal.emit();
