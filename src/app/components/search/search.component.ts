@@ -20,8 +20,7 @@ export class SearchComponent implements OnInit {
   componentType: ComponentType = ComponentType.SEARCH;
 
 
-  constructor(private taskService: TasksService,
-              private searchFilterPipe: SearchFilterPipe) {
+  constructor(private taskService: TasksService) {
   }
 
   ngOnInit(): void {

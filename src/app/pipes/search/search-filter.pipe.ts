@@ -16,11 +16,10 @@ export class SearchFilterPipe implements PipeTransform {
     const username = taskFilter.username.toLocaleLowerCase();
     const status = taskFilter.status;
 
-
     return tasks.filter(task => {
       return task.name.toLocaleLowerCase().includes(name) &&
             task.description.toLocaleLowerCase().includes(description) &&
-            task.username.toLocaleLowerCase().includes(username) &&
+            (task.username.toLocaleLowerCase() == username || username == '') &&
             new Date(task.dueDate) > dueDate &&
             task.status == status;
     });
