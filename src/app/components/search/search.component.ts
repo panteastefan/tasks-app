@@ -27,9 +27,9 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTasks();
-    this.updateTasksTableService.updateTasksTableEvent$.subscribe(
+    this.updateTasksTableService.updateTasksEvent$.subscribe(
       (_) => {
-        this.taskSearch(this.task);
+          this.getTasks();
       }
     );
   }

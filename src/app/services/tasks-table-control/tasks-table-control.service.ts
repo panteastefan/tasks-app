@@ -7,16 +7,16 @@ import {BehaviorSubject, Subject} from "rxjs";
 export class TasksTableControlService {
   constructor() { }
   private updateUserTasksEvent = new Subject<any>();
-  private updateTasksTableEvent = new Subject<any>();
+  private updateTasksEvent = new Subject<any>();
 
   updateUserTasksEvent$ = this.updateUserTasksEvent.asObservable();
-  updateTasksTableEvent$ = this.updateTasksTableEvent.asObservable();
+  updateTasksEvent$ = this.updateTasksEvent.asObservable();
 
   eventUpdateUserTasks(){
     this.updateUserTasksEvent.next();
   }
 
-  eventUpdateTasksTable(){
-    this.updateTasksTableEvent.next();
+  eventUpdateTasks(){
+    this.updateTasksEvent.next();
   }
 }

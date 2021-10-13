@@ -42,6 +42,7 @@ export class UserTasksTableComponent implements OnInit {
       (response: number) => {
         this.deletedTaskId = response;
         this.tasksTableService.eventUpdateUserTasks();
+        this.tasksTableService.eventUpdateTasks();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
