@@ -20,7 +20,7 @@ export class SearchFilterPipe implements PipeTransform {
       return task.name.toLocaleLowerCase().includes(name) &&
             task.description.toLocaleLowerCase().includes(description) &&
             (task.username.toLocaleLowerCase() == username || username == '') &&
-            new Date(task.dueDate) > dueDate &&
+            new Date(task.dueDate) >= dueDate &&
             task.status == status;
     });
   }
