@@ -99,8 +99,11 @@ export class TaskComponent implements OnInit, OnChanges {
     }
   }
 
+  // after this.task modifies
   ngOnChanges(changes: SimpleChanges): void {
+    // updates the form
     this.updateForm()
+    // updates the search results based on the updated form
     this.taskSearchEvent.emit(this.task);
   }
 

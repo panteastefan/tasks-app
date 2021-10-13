@@ -35,6 +35,7 @@ export class EditTaskModalComponent implements OnInit {
     );
   }
 
+  // emitted from taskComponent - close button
   closeModal(): void{
     this.modalOutputEvent.emit();
   }
