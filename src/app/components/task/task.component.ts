@@ -21,20 +21,24 @@ import {ComponentType} from "../../models/component-type";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TaskComponent implements OnInit, OnChanges {
-  @Input() shouldShowSubmitButton: boolean = true;
   @Input() users!: User[];
+  // task that is showed as form input
   @Input() task!: Task;
-  @Input() isSearch: boolean = false;
+  // Edit / New / Search
   @Input() componentType: ComponentType = ComponentType.NONE;
-  @Output() taskOutputEvent = new EventEmitter<Task>();
-  @Output() taskSearchOutputEvent = new EventEmitter<Task>();
+  // submits task for edit/new task
+  @Output() taskSubmitEvent = new EventEmitter<Task>();
+  @Output() taskSearchEvent = new EventEmitter<Task>();
   @Output("resetSearchFilters") resetFilters: EventEmitter<any> = new EventEmitter();
   @Output("closeModal") clsModal: EventEmitter<any> = new EventEmitter();
 
   ComponentType = ComponentType;
-  newTask: Task;
+  confirmTask: Task;
   taskSearchFilters: Task;
+
+  // keys of the enum Status
   keys = Object.keys(Status);
+  // values of the enum Status
   statusValues = this.keys.map(k => Status[k as Status]);
 
   taskForm = this.formBuilder.group({
@@ -49,6 +53,7 @@ export class TaskComponent implements OnInit, OnChanges {
   constructor(private formBuilder: FormBuilder) {
   }
 
+  // gets the task input values and returns the Task
   getTaskFromForm(): Task {
     return new Task(this.taskForm.value.id,
       this.taskForm.value.name,
@@ -58,16 +63,25 @@ export class TaskComponent implements OnInit, OnChanges {
       this.taskForm.value.username)
   }
 
+  // search button
   taskSearchSubmit(): void {
     this.taskSearchFilters = this.getTaskFromForm()
-    this.taskSearchOutputEvent.emit(this.taskSearchFilters);
+    // emits to searchComponent to update tasks
+    this.taskSearchEvent.emit(this.taskSearchFilters);
+  }
+  // reset button
+  resetSearchFilter() {
+    // emits to searchComponent to update tasks
+    this.resetFilters.emit();
   }
 
-  submit(): void {
-    this.newTask = this.getTaskFromForm()
-    this.taskOutputEvent.emit(this.newTask);
+  // add or edit task -- form confirm button
+  submitTask(): void {
+    this.confirmTask = this.getTaskFromForm()
+    this.taskSubmitEvent.emit(this.confirmTask);
   }
 
+  // updates the form inputs with the task updated values
   private updateForm(): void {
     this.taskForm.patchValue({
       id: this.task.id,
@@ -87,13 +101,10 @@ export class TaskComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.updateForm()
-    this.taskSearchOutputEvent.emit(this.task);
+    this.taskSearchEvent.emit(this.task);
   }
 
-  resetSearchFilter() {
-    this.resetFilters.emit();
-  }
-
+  // emits to closeModal() from edit Task
   closeModal() {
     this.clsModal.emit();
   }

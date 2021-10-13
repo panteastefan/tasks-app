@@ -20,7 +20,8 @@ export class SearchComponent implements OnInit {
   componentType: ComponentType = ComponentType.SEARCH;
 
 
-  constructor(private taskService: TasksService, private searchFilterPipe: SearchFilterPipe) {
+  constructor(private taskService: TasksService,
+              private searchFilterPipe: SearchFilterPipe) {
   }
 
   ngOnInit(): void {
@@ -38,11 +39,13 @@ export class SearchComponent implements OnInit {
     );
   }
 
+  // updates tasks based on task search filters
   public taskSearch(task: Task): void{
     this.taskSearchFilters = task;
     this.searchFilterPipe.transform(this.tasks, task);
   }
 
+  // resets search filters and updates tasks in tasks-table
   public resetSearchFilters(): void{
     this.task = new Task(0, '', '', new Date(Date.now()).toISOString().substring(0, 10), Status.NEW, '');
     this.searchFilterPipe.transform(this.tasks, this.task);
