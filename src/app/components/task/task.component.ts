@@ -20,7 +20,7 @@ import {ComponentType} from "../../models/component-type";
   styleUrls: ['./task.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TaskComponent implements OnInit, OnChanges {
+export class TaskComponent implements OnInit {
   @Input() users!: User[];
   // task that is showed as form input
   @Input() task!: Task;
@@ -29,7 +29,7 @@ export class TaskComponent implements OnInit, OnChanges {
   // submits task for edit/new task
   @Output() taskSubmitEvent = new EventEmitter<Task>();
   @Output() taskSearchEvent = new EventEmitter<Task>();
-  @Output("resetSearchFilters") resetFilters: EventEmitter<any> = new EventEmitter();
+  @Output("resetSearchFilters") resetFilters: EventEmitter<Task> = new EventEmitter<Task>();
   @Output("closeModal") clsModal: EventEmitter<any> = new EventEmitter();
 
   ComponentType = ComponentType;
@@ -71,8 +71,11 @@ export class TaskComponent implements OnInit, OnChanges {
   }
   // reset button
   resetSearchFilter() {
+    this.task = new Task(0, '', '',
+      new Date(Date.now()).toISOString().substring(0, 10), Status.NEW, '');
+    this.updateForm()
     // emits to searchComponent to update tasks
-    this.resetFilters.emit();
+    this.resetFilters.emit(this.task);
   }
 
   // add or edit task -- form confirm button
@@ -97,13 +100,6 @@ export class TaskComponent implements OnInit, OnChanges {
       if(this.componentType == ComponentType.NEW) {
         this.statusValues = [this.statusValues[0]];
     }
-  }
-
-  // after this.task modifies
-  ngOnChanges(changes: SimpleChanges): void {
-    // updates the form
-    this.updateForm()
-    // updates the search results based on the updated form
     this.taskSearchEvent.emit(this.task);
   }
 

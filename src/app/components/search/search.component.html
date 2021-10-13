@@ -3,7 +3,7 @@
     <app-task [users]="users" [task]="task"
               (taskSearchEvent)="taskSearch($event)"
               [componentType]="componentType"
-              (resetSearchFilters)="resetSearchFilters()">
+              (resetSearchFilters)="resetSearchFilters($event)">
     </app-task>
   </div>
 
