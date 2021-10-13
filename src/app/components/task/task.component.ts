@@ -82,6 +82,7 @@ export class TaskComponent implements OnInit, OnChanges {
   submitTask(): void {
     this.confirmTask = this.getTaskFromForm();
     this.taskSubmitEvent.emit(this.confirmTask);
+    this.updateForm();
   }
 
   // updates the form inputs with the task updated values
