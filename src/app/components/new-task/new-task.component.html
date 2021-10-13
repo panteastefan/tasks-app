@@ -1,7 +1,7 @@
 <html>
   <div>
     <app-task [users]="users" [task]="task"
-              (taskOutputEvent)="addTask($event)"
+              (taskSubmitEvent)="addTask($event)"
               [componentType]="componentType">
     </app-task>
   </div>

@@ -3,8 +3,7 @@
     <h1>Update task</h1>
     <div>
       <app-task [task]="task" [users]="users"
-                (taskOutputEvent)="updateTask($event)"
-                [shouldShowSubmitButton]="false"
+                (taskSubmitEvent)="updateTask($event)"
                 [componentType]="componentType"
                 (closeModal)="closeModal()">
 

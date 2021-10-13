@@ -104,12 +104,12 @@
         </div>
 
         <div class="btn-group" *ngSwitchCase="ComponentType.EDIT">
-          <button class="button" (click)="submit()" type="submit">Save</button>
+          <button class="button" (click)="submitTask()" type="submit">Save</button>
           <button class="button" (click)="closeModal()" type="submit">Close</button>
         </div>
 
         <div class="btn-group" *ngSwitchCase="ComponentType.NEW">
-          <button class="button" (click)="submit()" type="submit">Submit</button>
+          <button class="button" (click)="submitTask()" type="submit">Submit</button>
         </div>
 
       </div>
