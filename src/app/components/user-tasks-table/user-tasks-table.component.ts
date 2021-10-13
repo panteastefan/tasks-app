@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges, ViewEncapsulation} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {NgbModal, NgbModalOptions, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 import {EditTaskModalComponent} from "../edit-task-modal/edit-task-modal.component";
 import {User} from "../../models/user";
