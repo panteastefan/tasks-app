@@ -13,7 +13,6 @@ import {User} from "../../models/user";
 import {FormBuilder} from "@angular/forms";
 import {Task} from "../../models/task";
 import {ComponentType} from "../../models/component-type";
-import {TasksTableControlService} from "../../services/tasks-table-control/tasks-table-control.service";
 
 @Component({
   selector: 'app-task',
@@ -51,8 +50,7 @@ export class TaskComponent implements OnInit, OnChanges {
     status: Status.NEW
   });
 
-  constructor(private formBuilder: FormBuilder,
-              private tasksTableService: TasksTableControlService) {
+  constructor(private formBuilder: FormBuilder) {
   }
 
   // gets the task input values and returns the Task

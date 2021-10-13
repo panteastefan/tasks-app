@@ -3,8 +3,6 @@ import {User} from "../../models/user";
 import {TasksService} from "../../services/tasks/tasks.service";
 import {Task} from "../../models/task";
 import {HttpErrorResponse} from "@angular/common/http";
-import {SearchFilterPipe} from "../../pipes/search/search-filter.pipe";
-import {Status} from "../../models/status";
 import {ComponentType} from "../../models/component-type";
 import {TasksTableControlService} from "../../services/tasks-table-control/tasks-table-control.service";
 
