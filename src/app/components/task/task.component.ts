@@ -108,7 +108,6 @@ export class TaskComponent implements OnInit, OnChanges {
     // updates the form everytime task gets changed
     this.updateForm()
   }
-  
   // emits to closeModal() from edit Task
   closeModal() {
     this.clsModal.emit();

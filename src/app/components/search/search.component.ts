@@ -6,6 +6,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {SearchFilterPipe} from "../../pipes/search/search-filter.pipe";
 import {Status} from "../../models/status";
 import {ComponentType} from "../../models/component-type";
+import {TasksTableControlService} from "../../services/tasks-table-control/tasks-table-control.service";
 
 @Component({
   selector: 'app-search',
@@ -20,11 +21,17 @@ export class SearchComponent implements OnInit {
   componentType: ComponentType = ComponentType.SEARCH;
 
 
-  constructor(private taskService: TasksService) {
+  constructor(private taskService: TasksService,
+              private updateTasksTableService: TasksTableControlService) {
   }
 
   ngOnInit(): void {
     this.getTasks();
+    this.updateTasksTableService.updateTasksTableEvent$.subscribe(
+      (_) => {
+        this.taskSearch(this.task);
+      }
+    );
   }
 
   public getTasks(): void {

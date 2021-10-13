@@ -1,10 +1,11 @@
-import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges, ViewEncapsulation} from '@angular/core';
 import {NgbModal, NgbModalOptions, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 import {EditTaskModalComponent} from "../edit-task-modal/edit-task-modal.component";
 import {User} from "../../models/user";
 import {Task} from "../../models/task";
 import {HttpErrorResponse} from "@angular/common/http";
 import {TasksService} from "../../services/tasks/tasks.service";
+import {TasksTableControlService} from "../../services/tasks-table-control/tasks-table-control.service";
 
 @Component({
   selector: 'app-user-tasks-table',
@@ -28,17 +29,19 @@ export class UserTasksTableComponent implements OnInit {
   @Input() taskSearch: Task;
 
   constructor(private modalService: NgbModal,
-              private taskService: TasksService) {
+              private taskService: TasksService,
+              private tasksTableService: TasksTableControlService) {
   }
 
   ngOnInit(): void {
-
   }
 
   deleteTask(taskId: number): void {
+
     this.taskService.deleteTask(taskId).subscribe(
       (response: number) => {
         this.deletedTaskId = response;
+        this.tasksTableService.eventUpdateTasks();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

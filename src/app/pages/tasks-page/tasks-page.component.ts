@@ -5,6 +5,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {User} from "../../models/user";
 import {UsersService} from "../../services/users/users.service";
 import {Status} from "../../models/status";
+import {TasksTableControlService} from "../../services/tasks-table-control/tasks-table-control.service";
 
 @Component({
   selector: 'app-tasks-page',
@@ -17,12 +18,18 @@ export class TasksPageComponent implements OnInit {
   public tasks!: Task[];
 
   constructor(private taskService: TasksService,
-              private userService: UsersService) { }
+              private userService: UsersService,
+              private tasksTableService: TasksTableControlService) { }
 
   ngOnInit(): void {
     this.getUserTasks();
     this.getUsers();
     this.setTask();
+    this.tasksTableService.updateTasksEvent$.subscribe(
+      (_) => {
+        this.getUserTasks();
+      }
+    );
   }
 
   public getUserTasks(): void {
@@ -40,6 +47,7 @@ export class TasksPageComponent implements OnInit {
   this.task = new Task(0, '', '', new Date(Date.now()).toISOString().substring(0, 10),
     Status.NEW, '');
   }
+
   public getUsers(): void{
     this.userService.getUsers().subscribe(
       (response: User[]) => {
