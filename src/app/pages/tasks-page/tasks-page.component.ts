@@ -25,7 +25,7 @@ export class TasksPageComponent implements OnInit {
     this.getUserTasks();
     this.getUsers();
     this.setTask();
-    this.tasksTableService.updateTasksEvent$.subscribe(
+    this.tasksTableService.updateUserTasksEvent$.subscribe(
       (_) => {
         this.getUserTasks();
       }
