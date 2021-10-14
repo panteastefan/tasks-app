@@ -21,6 +21,9 @@ export class LoginPageComponent implements OnInit {
               private router: Router, private cookieService: CookieService) { }
 
   ngOnInit(): void {
+    if(this.cookieService.get('lgnck') != ''){
+      this.router.navigateByUrl("/tasks");
+    }
   }
 
   onSubmit(){
