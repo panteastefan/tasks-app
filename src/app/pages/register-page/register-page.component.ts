@@ -39,4 +39,8 @@ export class RegisterPageComponent implements OnInit {
       }
     );
   }
+
+  moveToLogin() {
+    this.router.navigateByUrl("/");
+  }
 }
