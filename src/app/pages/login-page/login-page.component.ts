@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import {LoginService} from "../../services/users/login.service";
+import {LoginService} from "../../services/users/login/login.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {CookieService} from "ngx-cookie-service";
@@ -24,7 +24,8 @@ export class LoginPageComponent implements OnInit {
   }
 
   onSubmit(){
-    this.loginService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe(
+    this.loginService.login(this.loginForm.value.username,
+      this.loginForm.value.password).subscribe(
       (response: any) => {
         this.cookieService.set("lgnck", response.loginToken);
         this.router.navigateByUrl("/tasks");

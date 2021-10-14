@@ -1,0 +1,26 @@
+.register{
+  border-radius: 15px;
+  border: solid #566359;
+  padding: 30px 70px 40px;
+  position: absolute;
+  top: 25%;
+  left: 40%;
+}
+.submit {
+  border: 1px solid #566359;
+  margin-right: 5px;
+  padding: 3px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  float: left;
+}
+
+.submit:hover {
+  background-color: #a2b5a1;
+}
+
+
+h1 {
+  padding-bottom: 20px;
+  text-align: center;
+}

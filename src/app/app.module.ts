@@ -17,6 +17,8 @@ import {ModalModule} from "ngb-modal";
 import {SearchFilterPipe} from "./pipes/search/search-filter.pipe";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
+import { LogOutPageComponent } from './pages/log-out-page/log-out-page.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TasksPageComponent,
     NewTaskComponent,
     EditTaskModalComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    RegisterPageComponent,
+    LogOutPageComponent
   ],
   imports: [
     BrowserModule,
