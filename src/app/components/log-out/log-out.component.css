@@ -1,0 +1,19 @@
+.logout{
+  padding: 30px 70px 20px;
+}
+
+h3 {
+  text-align: center;
+}
+button {
+  background-color: #566359;
+  color: white;
+  margin-top: 6px;
+  border-radius: 12px;
+  padding: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #7c8a80;
+}
