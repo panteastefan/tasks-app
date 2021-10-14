@@ -15,6 +15,8 @@ import { NewTaskComponent } from './components/new-task/new-task.component';
 import { EditTaskModalComponent } from './components/edit-task-modal/edit-task-modal.component';
 import {ModalModule} from "ngb-modal";
 import {SearchFilterPipe} from "./pipes/search/search-filter.pipe";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import {SearchFilterPipe} from "./pipes/search/search-filter.pipe";
     TabsModule,
     FormsModule,
     ReactiveFormsModule,
-    ModalModule
+    ModalModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule
   ],
   providers: [SearchFilterPipe],
   bootstrap: [AppComponent]

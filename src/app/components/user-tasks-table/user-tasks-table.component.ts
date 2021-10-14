@@ -6,6 +6,7 @@ import {Task} from "../../models/task";
 import {HttpErrorResponse} from "@angular/common/http";
 import {TasksService} from "../../services/tasks/tasks.service";
 import {TasksTableControlService} from "../../services/tasks-table-control/tasks-table-control.service";
+import {NotificationBarService} from "../../services/notification/notification-bar.service";
 
 @Component({
   selector: 'app-user-tasks-table',
@@ -30,7 +31,8 @@ export class UserTasksTableComponent implements OnInit {
 
   constructor(private modalService: NgbModal,
               private taskService: TasksService,
-              private tasksTableService: TasksTableControlService) {
+              private tasksTableService: TasksTableControlService,
+              private notificationBar: NotificationBarService) {
   }
 
   ngOnInit(): void {
@@ -43,6 +45,7 @@ export class UserTasksTableComponent implements OnInit {
         this.deletedTaskId = response;
         this.tasksTableService.eventUpdateUserTasks();
         this.tasksTableService.eventUpdateTasks();
+        this.notificationBar.openChangeNotificationBar("Task deleted");
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

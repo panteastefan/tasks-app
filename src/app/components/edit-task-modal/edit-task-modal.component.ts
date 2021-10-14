@@ -6,6 +6,7 @@ import {User} from "../../models/user";
 import {NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 import {ComponentType} from "../../models/component-type";
 import {TasksTableControlService} from "../../services/tasks-table-control/tasks-table-control.service";
+import {NotificationBarService} from "../../services/notification/notification-bar.service";
 
 @Component({
   selector: 'app-edit-task-modal',
@@ -21,7 +22,8 @@ export class EditTaskModalComponent implements OnInit {
   updatedTask: Task;
 
   constructor(private taskService: TasksService,
-              private tasksTableService: TasksTableControlService) { }
+              private tasksTableService: TasksTableControlService,
+              private notificationBar: NotificationBarService) { }
 
   ngOnInit(): void {
   }
@@ -32,6 +34,7 @@ export class EditTaskModalComponent implements OnInit {
         this.updatedTask = response;
         this.tasksTableService.eventUpdateUserTasks();
         this.tasksTableService.eventUpdateTasks();
+        this.notificationBar.openChangeNotificationBar("Task updated");
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

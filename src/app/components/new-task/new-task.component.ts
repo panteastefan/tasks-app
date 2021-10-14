@@ -5,6 +5,7 @@ import {TasksService} from "../../services/tasks/tasks.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {ComponentType} from "../../models/component-type";
 import {TasksTableControlService} from "../../services/tasks-table-control/tasks-table-control.service";
+import {NotificationBarService} from "../../services/notification/notification-bar.service";
 
 @Component({
   selector: 'app-new-task',
@@ -18,7 +19,8 @@ export class NewTaskComponent implements OnInit {
   componentType: ComponentType = ComponentType.NEW;
 
   constructor(private taskService: TasksService,
-              private tasksTableService: TasksTableControlService) { }
+              private tasksTableService: TasksTableControlService,
+              private notificationBar: NotificationBarService) { }
 
   ngOnInit(): void {
   }
@@ -29,6 +31,7 @@ export class NewTaskComponent implements OnInit {
         this.addedTask = response;
         this.tasksTableService.eventUpdateUserTasks();
         this.tasksTableService.eventUpdateTasks();
+        this.notificationBar.openChangeNotificationBar("Task added");
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

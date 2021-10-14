@@ -35,4 +35,6 @@ label {
   background-color: #7c8a80;
 }
 
-
+mat-form-field {
+  margin-right: 12px;
+}

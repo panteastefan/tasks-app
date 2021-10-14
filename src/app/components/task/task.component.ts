@@ -13,6 +13,7 @@ import {User} from "../../models/user";
 import {FormBuilder} from "@angular/forms";
 import {Task} from "../../models/task";
 import {ComponentType} from "../../models/component-type";
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-task',
