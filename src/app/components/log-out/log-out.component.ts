@@ -18,7 +18,6 @@ export class LogOutComponent implements OnInit {
   logOut() {
     this.logoutService.logout().subscribe(
       (response: any) => {
-        console.log(response);
         if(response != null){
           this.logoutService.updateCookie(response);
           this.router.navigateByUrl("/");

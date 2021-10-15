@@ -6,6 +6,8 @@ import {User} from "../../models/user";
 import {UsersService} from "../../services/users/users.service";
 import {Status} from "../../models/status";
 import {TasksTableControlService} from "../../services/tasks-table-control/tasks-table-control.service";
+import {CookieService} from "ngx-cookie-service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-tasks-page',
@@ -19,17 +21,19 @@ export class TasksPageComponent implements OnInit {
 
   constructor(private taskService: TasksService,
               private userService: UsersService,
-              private tasksTableService: TasksTableControlService) { }
+              private tasksTableService: TasksTableControlService,
+              private cookieService: CookieService,
+              private router: Router) { }
 
   ngOnInit(): void {
-    this.getUserTasks();
-    this.getUsers();
-    this.setTask();
-    this.tasksTableService.updateUserTasksEvent$.subscribe(
-      (_) => {
-        this.getUserTasks();
-      }
-    );
+      this.getUserTasks();
+      this.getUsers();
+      this.setTask();
+      this.tasksTableService.updateUserTasksEvent$.subscribe(
+        (_) => {
+          this.getUserTasks();
+        }
+      );
   }
 
   public getUserTasks(): void {
