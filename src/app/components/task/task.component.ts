@@ -85,6 +85,14 @@ export class TaskComponent implements OnInit, OnChanges {
     this.updateForm();
   }
 
+  submitAddTask(): void{
+    this.submitTask();
+  }
+  submitEditTask(): void{
+    this.submitTask();
+    this.closeModal();
+  }
+
   // updates the form inputs with the task updated values
   private updateForm(): void {
     this.taskForm.patchValue({
