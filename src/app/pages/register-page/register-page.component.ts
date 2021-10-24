@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder} from "@angular/forms";
 import {HttpErrorResponse} from "@angular/common/http";
-import {LoginService} from "../../services/users/login/login.service";
 import {RegisterService} from "../../services/users/register/register.service";
 import {Router} from "@angular/router";
 
